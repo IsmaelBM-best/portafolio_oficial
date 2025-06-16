@@ -12,7 +12,7 @@
                         Contáctame
                         <img src="./../assets/arrow-down-white.svg" alt="">
                     </a>
-                    <a href="" class="about_button">
+                    <a href="#about_me" class="about_button">
                         Sobre mi
                     </a>
                 </div>

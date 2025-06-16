@@ -2,6 +2,7 @@
 import AboutMe from './AboutMe.vue';
 import SkillsBriefcase from './SkillsBriefcase.vue';
 import StartBriefcase from './StartBriefcase.vue';
+import MyProjects from './MyProjects.vue';
 
 </script>
 
@@ -9,6 +10,7 @@ import StartBriefcase from './StartBriefcase.vue';
     <div class="main_principal_container">
         <StartBriefcase />
         <AboutMe />
+        <MyProjects />
         <SkillsBriefcase />
     </div>
 </template>

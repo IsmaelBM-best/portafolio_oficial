@@ -9,7 +9,7 @@
         </div>
         <div class="about_me_content">
             <div class="history_container">
-                <img src="./../assets/equipo-desarrollo.jpeg" alt="">
+                <img src="./../assets/my_history_img.png" alt="">
                 <div class="history_text">
                     <div class="title">Mi historia</div>
                     <div class="description">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="" class="cv_link">Descargar CV</a>
+                <a href="https://docs.google.com/document/d/e/2PACX-1vTmUX92t-fcBiXfsrctA7b2cuUAXoqSwrCbfHEVTDAyje4EOUNw7CPwpxg1guFPU24tbEor449OFQ7W/pub" target="_blank" class="cv_link">Descargar CV</a>
             </div>
         </div>
     </div>
