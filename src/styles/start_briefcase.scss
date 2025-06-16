@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin flex_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex_between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.start_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    .introduce_container {
+        width: 100%;
+        @include flex_between;
+        .introduction_container {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            .title {
+                font-size: 3.5rem;
+                font-weight: 600;
+                color: #ffffff;
+                text-wrap-style: balance;
+                span {
+                    display: inline-block;
+                    .text {
+                        width: 100%;
+                        color: #835aee;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        border-right: 6px solid #835aee;
+                        animation: typing 3s steps(30),
+                        type .4s step-end infinite alternate;
+                    }
+                }
+            }
+            .description {
+                font-size: 1.5rem;
+                color: #a1a1aa;
+                text-wrap-style: balance;
+            }
+            .buttons_container {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                .contact_button {
+                    width: 10rem;
+                    height: 3rem;
+                    @include flex_center;
+                    background-color: #915eff;
+                    border: none;
+                    border-radius: .5rem;
+                    color: #ffffff;
+                    font-weight: 550;
+                    font-size: 1.1rem;
+                    gap: .8rem;
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                    text-decoration: none;
+                    &:hover {
+                        background-color: #7c55df;
+                    }
+                    img {
+                        width: 1.3rem;
+                        height: 1.3rem;
+                    }
+                }
+                .about_button {
+                    width: 10rem;
+                    height: 3rem;
+                    @include flex_center;
+                    border: 1px solid #915eff;
+                    background-color: #090a1c;
+                    border-radius: .5rem;
+                    color: #915eff;
+                    font-weight: 550;
+                    font-size: 1.1rem;
+                    cursor: pointer;
+                    text-decoration: none;
+                    &:hover {
+                        border: 1px solid #7c55df;
+                    }
+                }
+            }
+            .social_media {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                gap: 1rem;
+                color: #a1a1aa;
+                font-size: 1.2rem;
+                .images_container {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    img {
+                        width: 2rem;
+                        height: 2rem;
+                        transition: all 0.3s ease;
+                        &:hover {
+                            transform: scale(1.2);
+                        }
+                    }
+                }
+            }
+        }
+        .my_image_container {
+            width: 25rem;
+            height: 25rem;
+            background-color: #0f112e;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            @include flex_center;
+            border: 1px solid #915eff;
+            box-shadow: 0 0 20px rgba(145, 94, 255, 0.5);
+            animation: border_animation 1s infinite alternate;
+            img {
+                width: 15rem;
+                position: relative;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 35%;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(9, 10, 28, 0) 0%,
+                    rgba(9, 10, 28, 0.8) 40%,
+                    rgba(9, 10, 28, 1) 68%,
+                    #090a1c 100%
+                );
+                z-index: 2;
+                pointer-events: none;
+            }
+        }
+    }
+    .mouse_animation {
+        width: 100%;
+        @include flex_center;
+        flex-direction: column;
+        gap: 1rem;
+        color: #222430;
+        font-size: 1.1rem;
+        img {
+            width: 1.5rem;
+            height: 1.5rem;
+            animation: slide .7s infinite alternate;
+        }
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(.8rem);
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes type {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes border_animation {
+    from {
+        box-shadow: 0 0 20px rgba(145, 94, 255, 0.5);
+    }
+    to {
+        box-shadow: 0 0 40px rgba(145, 94, 255, 0.5);
+    }
+}
+
+@media (max-width: 940px) {
+    .start_container .introduce_container .introduction_container .title {
+        font-size: 2.5rem;
+    }
+    .start_container .introduce_container .introduction_container .description {
+        font-size: 1.1rem;
+    }
+    .start_container .introduce_container .my_image_container {
+        width: 18rem;
+        height: 18rem;
+        img {
+            width: 10rem;
+        }
+    }
+
+    .start_container .introduce_container .introduction_container .buttons_container .contact_button {
+        font-size: .9rem;
+        height: 2.5rem;
+        img {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+    .start_container .introduce_container .introduction_container .buttons_container .about_button {
+        height: 2.5rem;
+        font-size: .9rem;
+    }
+    .start_container .introduce_container .introduction_container .social_media {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .start_container .introduce_container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        .introduction_container {
+            width: 100%;
+        }
+    }
+    .start_container .introduce_container .introduction_container .title {
+        font-size: 2rem;
+        text-align: center;
+    }
+    .start_container .introduce_container .introduction_container .description {
+        text-align: center;
+    }
+    .start_container .introduce_container .introduction_container .buttons_container {
+        justify-content: center;
+    }
+    .start_container .introduce_container .introduction_container .social_media {
+        justify-content: center;
+    }
+    .start_container .introduce_container .my_image_container {
+        width: 15rem;
+        height: 15rem;
+        img {
+            width: 9rem;
+        }
+    }
+}
