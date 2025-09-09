@@ -23,7 +23,7 @@ function toggleDeployOptions() {
             <a href="#skills" class="option">Habilidades</a>
             <a href="#contact" class="option">Contacto</a>
         </div>
-        <a href="" class="contact_me">
+        <a href="#contact" class="contact_me">
             Contáctame
             <img src="./../assets/send-contact.svg" alt="">
         </a>

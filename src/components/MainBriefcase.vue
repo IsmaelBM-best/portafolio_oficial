@@ -3,7 +3,8 @@ import AboutMe from './AboutMe.vue';
 import SkillsBriefcase from './SkillsBriefcase.vue';
 import StartBriefcase from './StartBriefcase.vue';
 import MyProjects from './MyProjects.vue';
-
+import ContactMe from './ContactMe.vue';
+import Footer from './Footer.vue';
 </script>
 
 <template>
@@ -12,6 +13,8 @@ import MyProjects from './MyProjects.vue';
         <AboutMe />
         <MyProjects />
         <SkillsBriefcase />
+        <ContactMe />
+        <Footer />
     </div>
 </template>
 

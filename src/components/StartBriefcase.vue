@@ -8,7 +8,7 @@
                 <div class="title">Hola, soy<br><span><div class="text">Ismael Blandón...</div></span><br>Desarrollador Front-End</div>
                 <div class="description">Creando experiencias digitales atractivas y funcionales con las últimas tecnologías web.</div>
                 <div class="buttons_container">
-                    <a href="" class="contact_button">
+                    <a href="#contact" class="contact_button">
                         Contáctame
                         <img src="./../assets/arrow-down-white.svg" alt="">
                     </a>

@@ -5,6 +5,15 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+:root {
+    --title-primary: #fff;
+    --title-secondary: #835aee;
+    --description-color: #a1a1aa;
+
+    --background-color: #0b0d27;
+    --border-color: #271d53;
+}
+
 .components_container {
     width: 100%;
     height: 100%;
