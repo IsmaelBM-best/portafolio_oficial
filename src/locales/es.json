@@ -1,0 +1,80 @@
+{
+    "header": {
+        "inicio": "Inicio",
+        "sobre_mi": "Sobre mí",
+        "habilidades": "Habilidades",
+        "proyectos": "Proyectos",
+        "contacto": "Contacto"
+    },
+    "start_briefcase": {
+        "titulo_inicio": "Hola, soy",
+        "nombre": "Ismael Blandon...",
+        "titulo_puesto": "Desarrollador Frontend",
+        "descripcion": "Creando experiencias digitales atractivas y funcionales con las últimas tecnologías web.",
+        "boton_contacto": "Contáctame",
+        "boton_sobre_mi": "Sobre mi",
+        "boton_sigueme": "Sígueme en",
+        "desplazate": "Desplázate para más"
+    },
+    "about_me": {
+        "titulo": "Sobre",
+        "mi": "mí",
+        "descripcion_uno": "Conoce un poco más sobre mi trayectoria y experiencia profesional.",
+        "titulo_dos": "Mi historia",
+        "descripcion_dos": "Con más de 3 años de experiencia como desarrollador front-end, he tenido el privilegio de formar parte del equipo de desarrollo en Coco Tecnologías, donde trabajé en soluciones digitales para el sector salud por dos años, tambien he trabajado en tiendas en línea y empresas de coaching. A lo largo de este tiempo, he desarrollado interfaces limpias, modernas y funcionales que conectan con el usuario.<br><br>Mi formación profesional en Academlo consolidó mis conocimientos en tecnologías como HTML, CSS, JavaScript, Vue.js y React, permitiéndome abordar cada proyecto con enfoque, claridad y propósito.",
+        "titulo_experiencia": "Experiencia Profesional",
+        "titutlo_desarrollador_uno": "Desarrollador Front-End Junior",
+        "empresa_anchor": "Coco Tecnologías",
+        "fecha_uno": "Junio de 2023",
+        "descripcion_empresa": "En Coco Tecnologías pasé de maquetador middle a desarrollador front-end junior, gracias a mis entregas puntuales y consistentes por sprint. Trabajé en proyectos clave como el multiagendamiento de diagnósticos, la programación de cirugías para el sector salud y muchos más.",
+        "titutlo_desarrollador_dos": "Desarrollador Full stack Junior",
+        "estudio_anchor": "Academlo",
+        "fecha_dos": "Enero de 2023",
+        "descripcion_estudio": "Me formé como desarrollador front-end en Academlo, donde fortalecí mis habilidades en HTML, CSS, JavaScript, Vue y React. Además, obtuve bases sólidas en tecnologías backend como Node.js, PostgreSQL (PgAdmin), Postman y modelado de bases de datos con dbdiagram, trabajando con metodologías ágiles y proyectos reales guiados por mentores.",
+        "cv_url": "Descargar CV"
+    },
+    "projects": {
+        "titulo": "Mis",
+        "proyectos": "Proyectos",
+        "trabajos": "Una selección de mis trabajos más destacados.",
+        "titulo_proyecto_uno": "Plataforma de agendamiento médico",
+        "descripcion_proyecto_uno": "Aplicación web para agendar servicios médicos, desarrollada como prueba técnica. Permite seleccionar especialidades, fechas y registrar pacientes.",
+        "ver": "Ver",
+        "codigo": "Código",
+        "titulo_proyecto_dos": "Marvel API",
+        "descripcion_proyecto_dos": "Proyecto personal para mejorar habilidades en consumo de APIs. Explora contenido del universo Marvel integrando React, diseño responsivo y manejo eficiente de datos.",
+        "titulo_proyecto_tres": "Trivia interactiva en línea",
+        "descripcion_proyecto_tres": "Juego web de trivia con manejo avanzado de estado, temporizadores y puntajes. Interfaz dinámica y completamente responsiva, ideal para mejorar UX y lógica Front-End."
+    },
+    "skills": {
+        "titulo": "Mis",
+        "habilidades": "Habilidades",
+        "descripcion": "Tecnologías y herramientas con las que trabajo diariamente.",
+        "frontend": "Front-end",
+        "herramientas": "Herramientas"
+    },
+    "contact": {
+        "titulo": "Contáctame",
+        "descripcion": "¿Tienes un proyecto en mente? Estoy disponible para nuevas oportunidades.",
+        "titulo_informacion": "Información de contacto",
+        "email": "Email",
+        "mail": "ismaelblandonwork@gmail.com",
+        "telefono": "Teléfono",
+        "numero": "300 798 2609",
+        "ubicacion": "Ubicación",
+        "ciudad": "Bello, Antioquia",
+        "sigueme": "Sígueme en:",
+        "form_nombre": "Nombre",
+        "form_email": "Email",
+        "form_mensaje": "Mensaje",
+        "nombre_plceholder": "Tu nombre",
+        "email_placeholder": "tu@email.com",
+        "mensaje_placeholder": "Deja un mensaje...",
+        "enviar": "Enviar mensaje"
+    },
+    "footer": {
+        "titulo": "Portafolio",
+        "descripcion": "Creado por Ismael Blandón con Vue.js, SASS y JavaScript.",
+        "derechos": "© 2025 Ismael Blandón. Todos los derechos reservados."
+    }
+}

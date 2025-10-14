@@ -1,50 +1,63 @@
-<script>
-export default {
-  data() {
-    return {
-      name: '',
-      email: '',
-      message: '',
-      nameError: '',
-      emailError: ''
+<script setup>
+import { ref, computed } from 'vue'
+import es from '../locales/es.json'
+import en from '../locales/en.json'
+
+const props = defineProps({
+  isSpanish: Boolean
+})
+
+const content = computed(() => props.isSpanish ? es.contact : en.contact)
+
+const name = ref('')
+const email = ref('')
+const message = ref('')
+const nameError = ref('')
+const emailError = ref('')
+
+function sendMessage() {
+    nameError.value = ''
+    emailError.value = ''
+
+    if (!name.value) {
+        nameError.value = props.isSpanish ? "El nombre es obligatorio." : "Name is required."
     }
-  },
-  methods: {
-    sendMessage() {
-      this.nameError = ''
-      this.emailError = ''
-
-      if (!this.name) {
-        this.nameError = "El nombre es obligatorio."
-      }
-      if (!this.email) {
-        this.emailError = "El correo es obligatorio."
-      }
-
-      if (this.nameError || this.emailError) {
-        return
-      }
-
-      const phone = "573007982609"
-      const text = `Hola, soy ${this.name} (${this.email}). ${this.message || ''}`
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`
-      window.open(url, "_blank")
+    if (!email.value) {
+        emailError.value = props.isSpanish ? "El correo es obligatorio." : "Email is required."
     }
-  }
+
+    if (nameError.value || emailError.value) return
+
+    const phone = "573007982609"
+
+    // Texto inicial según idioma
+    const greeting = props.isSpanish
+        ? `Hola, soy ${name.value} (${email.value}).`
+        : `Hi, I'm ${name.value} (${email.value}).`
+
+    // Texto final incluye el mensaje si existe
+    const text = `${greeting} ${message.value || ''}`
+
+    // URL de WhatsApp codificada
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`
+
+    // Abrir WhatsApp
+    window.open(url, "_blank")
+
 }
 </script>
 
 <template>
     <div class="contact_me_container" id="contact">
         <div class="titles">
-            <div class="title">Contáctame</div>
-            <div class="description">¿Tienes un proyecto en mente? Estoy disponible para nuevas oportunidades.</div>
+            <div class="title">{{ content.titulo }}</div>
+            <div class="description">{{ content.descripcion }}</div>
         </div>
         <div class="contact_info_and_form">
             <div class="contact_info">
                 <div class="title_and_description">
-                    <div class="title">Información de Contacto</div>
-                    <div class="description">Estoy interesado en oportunidades y proyectos desafiantes. No dudes en contactarme para llegar a un acuerdo.</div>
+                    <div class="title">{{ content.titulo_informacion }}</div>
+                    <div class="description">{{ content.descripcion }}</div>
                 </div>
                 <div class="contact_fonts">
                     <div class="contact_font">
@@ -52,8 +65,8 @@ export default {
                             <img src="/src/assets/mail-icon.svg" alt="">
                         </div>
                         <div class="font_titles">
-                            <div class="title">Email</div>
-                            <a class="font" href="mailto:ismaelblandonwork@gmail.com">ismaelblandonwork@gmail.com</a>
+                            <div class="title">{{ content.email }}</div>
+                            <a class="font" href="mailto:{{ content.mail }}">{{ content.mail }}</a>
                         </div>
                     </div>
                     <div class="contact_font">
@@ -61,8 +74,8 @@ export default {
                             <img src="/src/assets/phone-icon.svg" alt="" class="phone_img">
                         </div>
                         <div class="font_titles">
-                            <div class="title">Teléfono</div>
-                            <a class="font" href="tel:+573007982609">300 798 2609</a>
+                            <div class="title">{{ content.telefono }}</div>
+                            <a class="font" href="tel:+573007982609">{{ content.numero }}</a>
                         </div>
                     </div>
                     <div class="contact_font">
@@ -70,12 +83,12 @@ export default {
                             <img src="/src/assets/location-icon.svg" alt="" class="location_img">
                         </div>
                         <div class="font_titles">
-                            <div class="title">Ubicación</div>
-                            <a class="font">Bello, Antioquia</a>
+                            <div class="title">{{ content.ubicacion }}</div>
+                            <a class="font">{{ content.ciudad }}</a>
                         </div>
                     </div>
                     <div class="follow_links_container">
-                        <div class="title_follow">Sigueme en:</div>
+                        <div class="title_follow">{{ content.sigueme }}</div>
                         <div class="links">
                             <a href="https://github.com/IsmaelBM-best">
                                 <img src="/src/assets/github-brands.svg" alt="">
@@ -89,27 +102,27 @@ export default {
             </div>
             <div class="contact_form">
                 <div class="form_input">
-                    <div class="label">Nombre <span>*</span></div>
+                    <div class="label">{{ content.form_nombre }} <span>*</span></div>
                     <div class="input_img">
                         <img src="./../assets/user-icon.svg" alt="">
-                        <input type="text" placeholder="Tu nombre" v-model="name">
+                        <input type="text" :placeholder="content.nombre_plceholder" v-model="name">
                     </div>
                     <span v-if="nameError" class="error">{{ nameError }}</span>
                 </div>
                 <div class="form_input">
-                    <div class="label">Email <span>*</span></div>
+                    <div class="label">{{ content.form_email }} <span>*</span></div>
                     <div class="input_img">
                         <img src="./../assets/send-icon-contact.svg" alt="">
-                        <input type="text" placeholder="tu@email.com" v-model="email">
+                        <input type="text" :placeholder="content.email_placeholder" v-model="email">
                     </div>
                     <span v-if="emailError" class="error">{{ emailError }}</span>
                 </div>
                 <div class="form_input">
-                    <div class="label">Mensaje</div>
-                    <textarea name="" id="" placeholder="Deja un mensaje..." v-model="message"></textarea>
+                    <div class="label">{{ content.form_mensaje }}</div>
+                    <textarea :placeholder="content.mensaje_placeholder" v-model="message"></textarea>
                 </div>
                 <button class="contact_button" @click="sendMessage">
-                    Enviar mensaje
+                    {{ content.enviar }}
                     <img src="./../assets/paper-plane.svg" alt="">
                 </button>
             </div>

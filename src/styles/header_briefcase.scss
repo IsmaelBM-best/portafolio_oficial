@@ -60,7 +60,8 @@
             }
         }
     }
-    .contact_me {
+    .change_language {
+        border: none;
         font-size: 1.1rem;
         color: #7f56ed;
         border-radius: .5rem;
@@ -72,8 +73,8 @@
         transition: all .3s ease;
         text-decoration: none;
         img {
-            width: 1.2rem;
-            height: 1.2rem;
+            width: 1.4rem;
+            height: 1.4rem;
         }
         &:hover {
             background-color: #21194bd3;
@@ -89,7 +90,7 @@
     .header_container .options_header {
         display: none;
     }
-    .header_container .contact_me {
+    .header_container .change_language {
         display: none;
     }
     .header_container .deploy_container {
@@ -142,6 +143,16 @@
             }
             .option:last-child {
                 border-radius: 0 0 .4rem .4rem;
+            }
+            .change_language {
+                display: flex;
+                width: 100%;
+                border-radius: .4rem .4rem 0 0;
+                padding: 0.7rem;
+                color: var(--description-color);
+                &:hover {
+                    background-color: #915eff59;
+                }
             }
         }
     }

@@ -38,9 +38,17 @@
         flex-direction: column;
         .title_and_description .title {
             justify-content: center;
+            text-align: center;
+            width: 100%;
         }
         .title_and_description .description {
             justify-content: center;
+            text-align: center;
+            width: 100%;
         }
+    }
+    .text_footer {
+        text-align: center;
+        width: 100%;
     }
 }

@@ -1,0 +1,80 @@
+{
+    "header": {
+        "home": "Home",
+        "about": "About me",
+        "skills": "Skills",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "start_briefcase": {
+        "titulo_inicio": "Hi, I'm",
+        "nombre": "Ismael Blandon...",
+        "titulo_puesto": "Frontend Developer",
+        "descripcion": "Creating engaging and functional digital experiences using the latest web technologies.",
+        "boton_contacto": "Contact Me",
+        "boton_sobre_mi": "About Me",
+        "boton_sigueme": "Follow me on",
+        "desplazate": "Scroll for more"
+    },
+    "about_me": {
+        "titulo": "About",
+        "mi": "Me",
+        "descripcion_uno": "Learn more about my background and professional experience.",
+        "titulo_dos": "My Story",
+        "descripcion_dos": "With over 3 years of experience as a front-end developer, I’ve had the privilege of being part of the development team at Coco Tecnologías, where I worked on digital solutions for the healthcare sector for two years. I’ve also collaborated on online stores and coaching companies. Throughout this time, I’ve developed clean, modern, and functional interfaces that truly connect with users.<br><br>My professional training at Academlo strengthened my knowledge of technologies such as HTML, CSS, JavaScript, Vue.js, and React, allowing me to approach each project with focus, clarity, and purpose.",
+        "titulo_experiencia": "Professional Experience",
+        "titutlo_desarrollador_uno": "Front-End Developer Junior",
+        "empresa_anchor": "Coco Tecnologías",
+        "fecha_uno": "June 2023",
+        "descripcion_empresa": "At Coco Tecnologías, I progressed from middle-level layout designer to junior front-end developer, thanks to my consistent and on-time sprint deliveries. I worked on key projects such as diagnostic multi-scheduling, surgery scheduling for the healthcare sector, and many more.",
+        "titutlo_desarrollador_dos": "Full Stack Developer Junior",
+        "estudio_anchor": "Academlo",
+        "fecha_dos": "January 2023",
+        "descripcion_estudio": "I was trained as a front-end developer at Academlo, where I strengthened my skills in HTML, CSS, JavaScript, Vue, and React. I also gained a solid foundation in backend technologies such as Node.js, PostgreSQL (PgAdmin), Postman, and database modeling with dbdiagram, working with agile methodologies and real projects guided by mentors.",
+        "cv_url": "Download CV"
+    },
+    "projects": {
+        "titulo": "My",
+        "proyectos": "Projects",
+        "trabajos": "A selection of my most outstanding work.",
+        "titulo_proyecto_uno": "Medical Appointment Platform",
+        "descripcion_proyecto_uno": "Web application for scheduling medical services, developed as a technical test. It allows users to select specialties, dates, and register patients.",
+        "ver": "View",
+        "codigo": "Code",
+        "titulo_proyecto_dos": "Marvel API",
+        "descripcion_proyecto_dos": "Personal project to enhance API consumption skills. Explore content from the Marvel universe using React, responsive design, and efficient data management.",
+        "titulo_proyecto_tres": "Interactive Online Trivia",
+        "descripcion_proyecto_tres": "Web-based trivia game with advanced state management, timers, and scoring system. Dynamic and fully responsive interface, ideal for improving UX and front-end logic."
+    },
+    "skills": {
+        "titulo": "My",
+        "habilidades": "Skills",
+        "descripcion": "Technologies and tools I work with daily.",
+        "frontend": "Front-end",
+        "herramientas": "Tools"
+    },
+    "contact": {
+        "titulo": "Contact Me",
+        "descripcion": "Do you have a project in mind? I'm available for new opportunities.",
+        "titulo_informacion": "Contact Information",
+        "email": "Email",
+        "mail": "ismaelblandonwork@gmail.com",
+        "telefono": "Phone",
+        "numero": "300 798 2609",
+        "ubicacion": "Location",
+        "ciudad": "Bello, Antioquia",
+        "sigueme": "Follow me on:",
+        "form_nombre": "Name",
+        "form_email": "Email",
+        "form_mensaje": "Message",
+        "nombre_plceholder": "Your name",
+        "email_placeholder": "your@email.com",
+        "mensaje_placeholder": "Leave a message...",
+        "enviar": "Send Message"
+    },
+    "footer": {
+        "titulo": "Portfolio",
+        "descripcion": "Created by Ismael Blandón with Vue.js, SASS, and JavaScript.",
+        "derechos": "© 2025 Ismael Blandón. All rights reserved."
+    }
+}
