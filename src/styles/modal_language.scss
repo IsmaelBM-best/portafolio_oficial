@@ -71,3 +71,32 @@
         }
     }
 }
+
+@media (max-width: 600px) {
+    .modal_language_container {
+        .modal_language {
+            width: 90%;
+            padding: 1rem;
+            .titles {
+                .title {
+                    font-size: 1.4rem;
+                }
+                .description {
+                    font-size: 1rem;
+                }
+            }
+            .buttons_container {
+                flex-direction: column;
+                .language_button {
+                    width: 60%;
+                    font-size: 1rem;
+                    img {
+                        width: 1.2rem;
+                        height: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+    
+}
