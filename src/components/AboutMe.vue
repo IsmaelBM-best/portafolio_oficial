@@ -59,7 +59,7 @@ const props = defineProps({
           </div>
         </div>
 
-        <a :href="props.isSpanish ? '/src/pdf/CV_oficial.pdf' : '/src/pdf/cv_english.pdf'" target="_blank" class="cv_link">
+        <a :href="props.isSpanish ? 'https://docs.google.com/document/d/1IAIFekb2yTLfw7-FugIfpLMnHSOuUoUEwHvtckperp4/edit?usp=sharing' : 'https://docs.google.com/document/d/1DhyVC_oSYC_9tpOrvcxRfERoxQgdskSdeIhB6ouK8HQ/edit?usp=sharing'" target="_blank" class="cv_link">
           {{ props.isSpanish ? es.about_me.cv_url : en.about_me.cv_url }}
         </a>
       </div>
