@@ -21,7 +21,7 @@ function toggleDeployOptions() { show_deploy_options.value = !show_deploy_option
       <div class="icon_container">
         <img src="./../assets/code-icon.svg" alt="icon" />
       </div>
-      <div class="name">Portafolio</div>
+      <div class="name">{{ props.isSpanish ? es.header.portafolio : en.header.briefcase }}</div>
     </div>
 
     <!-- Opciones del header -->

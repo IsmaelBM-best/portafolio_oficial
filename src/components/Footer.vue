@@ -7,7 +7,7 @@ const props = defineProps({ isSpanish: Boolean })
     <div class="title_and_description">
       <div class="title">
         <img src="./../assets/code-icon.svg" alt="">
-        {{ props.isSpanish ? 'Portafolio' : 'Portfolio' }}
+        {{ props.isSpanish ? 'Portafolio' : 'Briefcase' }}
       </div>
       <div class="description">
         {{ props.isSpanish 
