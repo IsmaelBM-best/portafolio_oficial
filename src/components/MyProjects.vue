@@ -5,7 +5,6 @@ import en from "../locales/en.json";
 const props = defineProps({ isSpanish: Boolean });
 const c = computed(() => (props.isSpanish ? es : en));
 import health from "../assets/medical-project.webp";
-import marvel from "../assets/marvel-project.webp";
 import trivia from "../assets/trivia-project.webp";
 import pawly from "../assets/pawly-project.webp";
 const projects = computed(() => [
@@ -16,14 +15,6 @@ const projects = computed(() => [
     url: "https://coco-ismael.netlify.app/",
     code: "https://github.com/IsmaelBM-best/coco",
     tag: "Web app · Healthcare",
-  },
-  {
-    title: c.value.projects.titulo_proyecto_dos,
-    description: c.value.projects.descripcion_proyecto_dos,
-    image: marvel,
-    url: "https://marvel-ibm.netlify.app/",
-    code: "https://github.com/IsmaelBM-best/marvel-ibm",
-    tag: "React · API",
   },
   {
     title: c.value.projects.titulo_proyecto_tres,
