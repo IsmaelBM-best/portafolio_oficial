@@ -4,10 +4,10 @@ import es from "../locales/es.json";
 import en from "../locales/en.json";
 const props = defineProps({ isSpanish: Boolean });
 const c = computed(() => (props.isSpanish ? es : en));
-import health from "../assets/health.webp";
-import marvel from "../assets/heros.webp";
-import trivia from "../assets/trivia.webp";
-import pawly from "../assets/pawly-dev-icon.png";
+import health from "../assets/medical-project.webp";
+import marvel from "../assets/marvel-project.webp";
+import trivia from "../assets/trivia-project.webp";
+import pawly from "../assets/pawly-project.webp";
 const projects = computed(() => [
   {
     title: c.value.projects.titulo_proyecto_uno,
@@ -39,7 +39,6 @@ const projects = computed(() => [
     image: pawly,
     url: "https://app-pawly.netlify.app/",
     tag: c.value.pawlyTag,
-    pawly: true,
   },
 ]);
 </script>
@@ -64,7 +63,7 @@ const projects = computed(() => [
         :key="project.url"
         class="project-card"
       >
-        <div class="project-image" :class="{ pawly: project.pawly }">
+        <div class="project-image">
           <img
             :src="project.image"
             :alt="project.title"

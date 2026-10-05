@@ -350,20 +350,17 @@ nav a:last-child {
   background: #22252b;
 }
 .project-image img {
+  position: absolute;
+  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.4s;
 }
 .project-card:hover .project-image img {
   transform: scale(1.025);
-}
-.project-image.pawly {
-  background: #eddcca;
-}
-.project-image.pawly img {
-  object-fit: contain;
-  padding: 35px;
 }
 .project-number {
   position: absolute;

@@ -33,8 +33,8 @@ function sendMessage() {
       <p class="eyebrow">{{ c.contactNew.eyebrow }}</p>
       <h2>{{ c.contactNew.title }}</h2>
       <p class="lead">{{ c.contactNew.intro }}</p>
-      <a class="email-link" href="mailto:ismaelblandonwork@gmail.com"
-        >ismaelblandonwork@gmail.com ↗</a
+      <a class="email-link" :href="'mailto:' + c.contact.mail"
+        >{{ c.contact.mail }} ↗</a
       >
       <p>{{ c.hero.location }}</p>
       <a href="tel:+573007982609">+57 300 798 2609</a>
