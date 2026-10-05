@@ -1,92 +1,100 @@
 <script setup>
-const props = defineProps({
-  isSpanish: Boolean
-})
-
-// Importamos los archivos de traducción
-import es from '../locales/es.json'
-import en from '../locales/en.json'
-
-import { computed } from 'vue'
-
-// Computed para obtener el contenido según el idioma
-const content = computed(() => props.isSpanish ? es.projects : en.projects)
+import { computed } from "vue";
+import es from "../locales/es.json";
+import en from "../locales/en.json";
+const props = defineProps({ isSpanish: Boolean });
+const c = computed(() => (props.isSpanish ? es : en));
+import health from "../assets/medical-project.webp";
+import marvel from "../assets/marvel-project.webp";
+import trivia from "../assets/trivia-project.webp";
+import pawly from "../assets/pawly-project.webp";
+const projects = computed(() => [
+  {
+    title: c.value.projects.titulo_proyecto_uno,
+    description: c.value.projects.descripcion_proyecto_uno,
+    image: health,
+    url: "https://coco-ismael.netlify.app/",
+    code: "https://github.com/IsmaelBM-best/coco",
+    tag: "Web app · Healthcare",
+  },
+  {
+    title: c.value.projects.titulo_proyecto_dos,
+    description: c.value.projects.descripcion_proyecto_dos,
+    image: marvel,
+    url: "https://marvel-ibm.netlify.app/",
+    code: "https://github.com/IsmaelBM-best/marvel-ibm",
+    tag: "React · API",
+  },
+  {
+    title: c.value.projects.titulo_proyecto_tres,
+    description: c.value.projects.descripcion_proyecto_tres,
+    image: trivia,
+    url: "https://trivia-ibm.netlify.app/",
+    code: "https://github.com/IsmaelBM-best/ismael-trivia",
+    tag: "Web app · Interactive UX",
+  },
+  {
+    title: c.value.pawly,
+    description: c.value.pawlyDescription,
+    image: pawly,
+    url: "https://app-pawly.netlify.app/",
+    tag: c.value.pawlyTag,
+  },
+]);
 </script>
-
 <template>
-    <div class="projects_container" id="projects">
-        <div class="titles">
-            <div class="title">{{ content.titulo }} <span>{{ content.proyectos }}</span></div>
-            <div class="description">{{ content.trabajos }}</div>
-        </div>
-
-        <div class="projects_cards">
-            <!-- Proyecto 1 -->
-            <div class="project_card">
-                <div class="img_container coco">
-                    <img src="./../assets/health.png" alt="">
-                </div>
-                <div class="info_project">
-                    <div class="title">{{ content.titulo_proyecto_uno }}</div>
-                    <div class="description">{{ content.descripcion_proyecto_uno }}</div>
-                </div>
-                <div class="buttons">
-                    <a href="https://coco-ismael.netlify.app/" target="_blank" class="demo_button">
-                        <img src="./../assets/eye-icon.svg" alt="">
-                        {{ content.ver }}
-                    </a>
-                    <a href="https://github.com/IsmaelBM-best/coco" target="_blank" class="code_button">
-                        <img src="./../assets/github-icon.svg" alt="">
-                        {{ content.codigo }}
-                    </a>
-                </div>
-            </div>
-
-            <!-- Proyecto 2 -->
-            <div class="project_card">
-                <div class="img_container marvel">
-                    <img src="./../assets/heros.png" alt="">
-                </div>
-                <div class="info_project">
-                    <div class="title">{{ content.titulo_proyecto_dos }}</div>
-                    <div class="description">{{ content.descripcion_proyecto_dos }}</div>
-                </div>
-                <div class="buttons">
-                    <a href="https://marvel-ibm.netlify.app/" target="_blank" class="demo_button">
-                        <img src="./../assets/eye-icon.svg" alt="">
-                        {{ content.ver }}
-                    </a>
-                    <a href="https://github.com/IsmaelBM-best/marvel-ibm" target="_blank" class="code_button">
-                        <img src="./../assets/github-icon.svg" alt="">
-                        {{ content.codigo }}
-                    </a>
-                </div>
-            </div>
-
-            <!-- Proyecto 3 -->
-            <div class="project_card">
-                <div class="img_container trivia">
-                    <img src="./../assets/trivia.png" alt="">
-                </div>
-                <div class="info_project">
-                    <div class="title">{{ content.titulo_proyecto_tres }}</div>
-                    <div class="description">{{ content.descripcion_proyecto_tres }}</div>
-                </div>
-                <div class="buttons">
-                    <a href="https://trivia-ibm.netlify.app/" target="_blank" class="demo_button">
-                        <img src="./../assets/eye-icon.svg" alt="">
-                        {{ content.ver }}
-                    </a>
-                    <a href="https://github.com/IsmaelBM-best/ismael-trivia" target="_blank" class="code_button">
-                        <img src="./../assets/github-icon.svg" alt="">
-                        {{ content.codigo }}
-                    </a>
-                </div>
-            </div>
-        </div>
+  <section id="projects" class="section">
+    <p class="eyebrow">
+      02 / {{ isSpanish ? "PROYECTOS SELECCIONADOS" : "SELECTED WORK" }}
+    </p>
+    <div class="section-heading">
+      <h2>
+        {{
+          isSpanish
+            ? "Ideas convertidas en productos."
+            : "Ideas turned into products."
+        }}
+      </h2>
+      <p>{{ c.projectIntro }}</p>
     </div>
+    <div class="project-grid">
+      <article
+        v-for="(project, i) in projects"
+        :key="project.url"
+        class="project-card"
+      >
+        <div class="project-image">
+          <img
+            :src="project.image"
+            :alt="project.title"
+            loading="lazy"
+            decoding="async"
+            width="640"
+            height="400"
+          /><span class="project-number">0{{ i + 1 }}</span>
+        </div>
+        <div class="project-body">
+          <p class="eyebrow">{{ project.tag }}</p>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <div class="project-links">
+            <a
+              :href="project.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="c.projects.ver + ' ' + project.title"
+              >{{ c.projects.ver }} ↗</a
+            ><a
+              v-if="project.code"
+              :href="project.code"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="c.projects.codigo + ' ' + project.title"
+              >{{ c.projects.codigo }} ↗</a
+            >
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
 </template>
-
-<style lang="scss" scoped>
-@import './../styles/my_projects.scss';
-</style>

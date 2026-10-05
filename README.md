@@ -1,56 +1,20 @@
-Ismael Blandón | Frontend Developer Portfolio 🚀
-Este repositorio contiene el código fuente de mi portafolio profesional, diseñado para mostrar mi trayectoria, habilidades técnicas y los proyectos de software que he liderado y desarrollado.
+# Ismael Blandon Moreno — Full-Stack + AI portfolio
 
-🔗 Live Demo
-https://ismael-portafolio-oficial.netlify.app/
+Vue 3, Vite 6 and Sass. English by default, with a persistent Spanish language switch. No language modal blocks the first visit.
 
-🛠️ Stack Tecnológico
-Core: HTML5, CSS3, JavaScript (ES6+).
+## Development
 
-Frameworks/Libraries: [Menciona aquí si usaste React, Vue o si es Vanilla JS].
+`npm ci`, then `npm run dev`. Production: `npm run build`; inspect with `npm run preview`.
+No lint or test scripts are configured in the original repository.
 
-Styling: [Tailwind CSS / Sass / CSS Modules].
+## Structure
 
-Deployment: Netlify con integración continua (CI/CD).
+`src/components` keeps the existing section boundaries. `src/locales` contains English and Spanish copy. `src/styles/app.scss` is the shared responsive design system. Original section styles and the unused language modal remain available for reference. `src/assets` contains imported images, including the supplied Pawly icon.
 
-✨ Características del Proyecto
-Arquitectura de Componentes: Código modular y escalable para facilitar la actualización de proyectos.
+Project order: medical appointment platform, Marvel API, online trivia, Pawly. Pawly’s description is based on https://app-pawly.netlify.app/ (reviewed October 5, 2026); the Android app itself was not installed or independently tested. Claude-assisted authorship is provided by the portfolio owner.
 
-Performance: Optimización de imágenes y carga de recursos para un rendimiento superior en Lighthouse.
+The contact form validates required name, email and project details, then opens WhatsApp with an encoded draft. The visitor reviews and sends it there. Email and telephone links are also available. No backend submission or automatic message sending is claimed.
 
-Responsive Design: Adaptabilidad completa utilizando estrategias de Mobile-First.
+## Deployment
 
-Accesibilidad: Uso de etiquetas semánticas para mejorar la navegación y el SEO.
-
-📂 Estructura del Proyecto
-Bash
-├── assets/         # Imágenes, iconos y recursos estáticos
-├── css/            # Hojas de estilo (Sass/Modules)
-├── js/             # Lógica de navegación y renderizado dinámico
-├── index.html      # Punto de entrada principal
-└── README.md       # Documentación técnica
-🚀 Instalación y Desarrollo Local
-Clona el repositorio:
-
-Bash
-git clone https://github.com/IsmaelBM-best/mi-portafolio.git
-Abre el proyecto en tu editor preferido (VS Code recomendado).
-
-Si utilizas herramientas de compilación (como Vite o Webpack):
-
-Bash
-npm install
-npm run dev
-📈 Objetivos del Desarrollo
-Este portafolio no es solo una vitrina, sino un ejercicio técnico donde apliqué:
-
-Clean Code: Escritura de código legible y mantenible.
-
-UX/UI: Enfoque en la experiencia del usuario y la jerarquía visual.
-
-Optimización SEO: Configuración de Meta Tags y Open Graph para una correcta indexación.
-
-📬 Contacto
-Email: ismaelblandonwork@gmail.com
-
-LinkedIn: https://www.linkedin.com/in/ismael-blandon-moreno
+Existing production URL: https://ismael-portafolio-oficial.netlify.app/ . Standard Vite output is `dist`, built with `npm run build`. No existing Netlify configuration was removed. The README previously claimed continuous deployment, but the current Netlify repository connection, production branch and deploy permissions require verification in Netlify. A local build or commit does not deploy the site.

@@ -1,72 +1,43 @@
 <script setup>
-import { defineProps } from 'vue'
-import es from '../locales/es.json'
-import en from '../locales/en.json'
-
-// Recibe el idioma desde App.vue
-const props = defineProps({
-  isSpanish: Boolean
-})
+import { computed } from "vue";
+import es from "../locales/es.json";
+import en from "../locales/en.json";
+const props = defineProps({ isSpanish: Boolean });
+const c = computed(() => (props.isSpanish ? es : en));
 </script>
-
 <template>
-  <div class="about_me_container" id="about_me">
-    <div class="title_and_description">
-      <div class="title">{{ props.isSpanish ? es.about_me.titulo : en.about_me.titulo }} <span>{{ props.isSpanish ? es.about_me.mi : en.about_me.mi }}</span></div>
-      <div class="description">{{ props.isSpanish ? es.about_me.descripcion_uno : en.about_me.descripcion_uno }}</div>
-    </div>
-
-    <div class="about_me_content">
-      <div class="history_container">
-        <img src="./../assets/my_history_img.png" alt="">
-        <div class="history_text">
-          <div class="title">{{ props.isSpanish ? es.about_me.titulo_dos : en.about_me.titulo_dos }}</div>
-          <div class="description" v-html="props.isSpanish ? es.about_me.descripcion_dos : en.about_me.descripcion_dos"></div>
-        </div>
+  <section id="about_me" class="section">
+    <p class="eyebrow">{{ c.about.eyebrow }}</p>
+    <div class="about-grid">
+      <div>
+        <h2>{{ c.about.title }}</h2>
+        <p class="lead">{{ c.about.intro }}</p>
+        <p>{{ c.about.body }}</p>
+        <p class="remote">{{ c.about.remote }}</p>
       </div>
-
-      <div class="professional_experience">
-        <div class="title">{{ props.isSpanish ? es.about_me.titulo_experiencia : en.about_me.titulo_experiencia }}</div>
-        <div class="experience_container">
-          <div class="experience">
-            <div class="figure_container">
-              <div class="figure"></div>
-            </div>
-            <div class="experience_presentation">
-              <div class="title">{{ props.isSpanish ? es.about_me.titutlo_desarrollador_uno : en.about_me.titutlo_desarrollador_uno }}</div>
-              <div class="company_and_date">
-                <a href="https://www.linkedin.com/company/coco-tecnologias/posts/?feedView=all" target="_blank">
-                  {{ props.isSpanish ? es.about_me.empresa_anchor : en.about_me.empresa_anchor }}
-                </a> • {{ props.isSpanish ? es.about_me.fecha_uno : en.about_me.fecha_uno }}
-              </div>
-              <div class="description">{{ props.isSpanish ? es.about_me.descripcion_empresa : en.about_me.descripcion_empresa }}</div>
-            </div>
-          </div>
-
-          <div class="experience">
-            <div class="figure_container">
-              <div class="figure"></div>
-            </div>
-            <div class="experience_presentation">
-              <div class="title">{{ props.isSpanish ? es.about_me.titutlo_desarrollador_dos : en.about_me.titutlo_desarrollador_dos }}</div>
-              <div class="company_and_date">
-                <a href="https://www.linkedin.com/school/academlo/posts/?feedView=all" target="_blank">
-                  {{ props.isSpanish ? es.about_me.estudio_anchor : en.about_me.estudio_anchor }}
-                </a> • {{ props.isSpanish ? es.about_me.fecha_dos : en.about_me.fecha_dos }}
-              </div>
-              <div class="description">{{ props.isSpanish ? es.about_me.descripcion_estudio : en.about_me.descripcion_estudio }}</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- <a :href="props.isSpanish ? 'https://docs.google.com/document/d/1IAIFekb2yTLfw7-FugIfpLMnHSOuUoUEwHvtckperp4/edit?usp=sharing' : 'https://docs.google.com/document/d/1DhyVC_oSYC_9tpOrvcxRfERoxQgdskSdeIhB6ouK8HQ/edit?usp=sharing'" target="_blank" class="cv_link">
-          {{ props.isSpanish ? es.about_me.cv_url : en.about_me.cv_url }}
-        </a> -->
+      <div class="experience-panel">
+        <h3>{{ c.about.experience }}</h3>
+        <article>
+          <span class="eyebrow">COCO TECNOLOGÍAS</span>
+          <p>{{ c.about.coco }}</p>
+          <a
+            href="https://www.linkedin.com/company/coco-tecnologias/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Coco Tecnologías ↗</a
+          >
+        </article>
+        <article>
+          <span class="eyebrow">ACADEMLO</span>
+          <p>{{ c.about.academlo }}</p>
+          <a
+            href="https://www.linkedin.com/school/academlo/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Academlo ↗</a
+          >
+        </article>
       </div>
     </div>
-  </div>
+  </section>
 </template>
-
-<style lang="scss" scoped>
-@import './../styles/about_me.scss';
-</style>

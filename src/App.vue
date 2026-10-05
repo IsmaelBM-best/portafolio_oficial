@@ -1,40 +1,28 @@
 <script setup>
-import { ref } from 'vue'
-import ModalLanguage from './components/ModalLanguage.vue'
-import HeaderBriefcase from './components/HeaderBriefcase.vue'
-import MainBriefcase from './components/MainBriefcase.vue'
-
-// Estado global del idioma: true = español, false = inglés
-const isSpanish = ref(true)
-
-// Estado para mostrar/ocultar el modal
-const showModal = ref(true)
-
-// Función para cambiar idioma (recibida desde el modal o header)
+import { ref, watchEffect } from "vue";
+import HeaderBriefcase from "./components/HeaderBriefcase.vue";
+import MainBriefcase from "./components/MainBriefcase.vue";
+let saved = "en";
+try {
+  saved = localStorage.getItem("lang") || "en";
+} catch {}
+const isSpanish = ref(saved === "es");
 function setLanguage(lang) {
-  isSpanish.value = lang === 'es'
-  // Si el cambio viene del modal, cerramos el modal
-  showModal.value = false
+  isSpanish.value = lang === "es";
+  try {
+    localStorage.setItem("lang", lang);
+  } catch {}
 }
+watchEffect(() => {
+  document.documentElement.lang = isSpanish.value ? "es" : "en";
+});
 </script>
-
 <template>
-  <div class="components_container">
-    <!-- Modal para seleccionar idioma inicialmente -->
-    <ModalLanguage 
-      v-if="showModal"
-      :isSpanish="isSpanish" 
-      @changeLanguage="setLanguage" 
-    />
-
-    <!-- Header recibe el estado y puede cambiarlo -->
-    <HeaderBriefcase :isSpanish="isSpanish" @changeLanguage="setLanguage" />
-
-    <!-- Main también recibe el estado para mostrar el idioma correcto -->
-    <MainBriefcase :isSpanish="isSpanish" />
-  </div>
+  <a class="skip-link" href="#main">{{
+    isSpanish ? "Ir al contenido" : "Skip to content"
+  }}</a
+  ><HeaderBriefcase
+    :isSpanish="isSpanish"
+    @changeLanguage="setLanguage"
+  /><MainBriefcase :isSpanish="isSpanish" />
 </template>
-
-<style lang="scss">
-@import './styles/app.scss';
-</style>
