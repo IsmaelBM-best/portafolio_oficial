@@ -45,7 +45,7 @@ const content = computed(() => props.isSpanish ? es.start_briefcase : en.start_b
                 </div>
             </div>
             <div class="my_image_container">
-                <img src="./../assets/me_transparent.png" alt="">
+                <img src="./../assets/yop.png" alt="">
             </div>
         </div>
         <div class="mouse_animation">
