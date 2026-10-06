@@ -3,14 +3,12 @@
     "titulo": "My",
     "proyectos": "Projects",
     "trabajos": "A selection of my most outstanding work.",
-    "titulo_proyecto_uno": "Medical Appointment Platform",
-    "descripcion_proyecto_uno": "Web application for scheduling medical services, developed as a technical test. It allows users to select specialties, dates, and register patients.",
+    "titulo_proyecto_uno": "CareFlow — Appointment Studio",
+    "descripcion_proyecto_uno": "Bilingual appointment demo with specialty availability, patient records, rescheduling, cancellation and calendar export. Demo records stay in your browser.",
     "ver": "View",
     "codigo": "Code",
-    "titulo_proyecto_dos": "Marvel API",
-    "descripcion_proyecto_dos": "Personal project to enhance API consumption skills. Explore content from the Marvel universe using React, responsive design, and efficient data management.",
-    "titulo_proyecto_tres": "Interactive Online Trivia",
-    "descripcion_proyecto_tres": "Web-based trivia game with advanced state management, timers, and scoring system. Dynamic and fully responsive interface, ideal for improving UX and front-end logic."
+    "titulo_proyecto_tres": "Ismael Trivia — Quiz Arcade",
+    "descripcion_proyecto_tres": "A bilingual minigame with 70 questions, seven categories and mixed rounds. Adjustable difficulty, timed or practice modes, scoring, streaks, answer reviews and local records."
   },
   "contact": {
     "titulo": "Contact Me",
@@ -31,7 +29,13 @@
     "mensaje_placeholder": "Leave a message...",
     "enviar": "Send Message"
   },
-  "nav": ["About", "Projects", "Services", "Contact me"],
+  "nav": [
+    "Home",
+    "About",
+    "Projects",
+    "Services",
+    "Contact me"
+  ],
   "hero": {
     "eyebrow": "Ismael Blandon Moreno · Independent developer",
     "title": "AI-Powered Full-Stack Developer for Startups & Small Businesses",
@@ -77,7 +81,11 @@
       ]
     ],
     "stack": "The tools behind the work",
-    "process": ["Define the scope", "Build & review", "Test & launch"]
+    "process": [
+      "Define the scope",
+      "Build & review",
+      "Test & launch"
+    ]
   },
   "projectIntro": "A selection of working projects. Explore the demos and the code.",
   "pawly": "Pawly — Pet Social App",

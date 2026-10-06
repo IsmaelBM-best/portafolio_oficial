@@ -3,14 +3,12 @@
     "titulo": "Mis",
     "proyectos": "Proyectos",
     "trabajos": "Una selección de mis trabajos más destacados.",
-    "titulo_proyecto_uno": "Plataforma de agendamiento médico",
-    "descripcion_proyecto_uno": "Aplicación web para agendar servicios médicos, desarrollada como prueba técnica. Permite seleccionar especialidades, fechas y registrar pacientes.",
+    "titulo_proyecto_uno": "CareFlow — Appointment Studio",
+    "descripcion_proyecto_uno": "Demo bilingüe de citas con disponibilidad por especialidad, registro de pacientes, reprogramación, cancelación y exportación al calendario. Los datos de demo se guardan en tu navegador.",
     "ver": "Ver",
     "codigo": "Código",
-    "titulo_proyecto_dos": "Marvel API",
-    "descripcion_proyecto_dos": "Proyecto personal para mejorar habilidades en consumo de APIs. Explora contenido del universo Marvel integrando React, diseño responsivo y manejo eficiente de datos.",
-    "titulo_proyecto_tres": "Trivia interactiva en línea",
-    "descripcion_proyecto_tres": "Juego web de trivia con manejo avanzado de estado, temporizadores y puntajes. Interfaz dinámica y completamente responsiva, ideal para mejorar UX y lógica Front-End."
+    "titulo_proyecto_tres": "Ismael Trivia — Quiz Arcade",
+    "descripcion_proyecto_tres": "Minijuego bilingüe con 70 preguntas, siete categorías y rondas mixtas. Dificultad configurable, modos con tiempo o práctica, puntajes, rachas, revisión de respuestas e historial local."
   },
   "contact": {
     "titulo": "Contáctame",
@@ -31,7 +29,13 @@
     "mensaje_placeholder": "Deja un mensaje...",
     "enviar": "Enviar mensaje"
   },
-  "nav": ["Sobre mí", "Proyectos", "Servicios", "Contáctame"],
+  "nav": [
+    "Inicio",
+    "Sobre mí",
+    "Proyectos",
+    "Servicios",
+    "Contáctame"
+  ],
   "hero": {
     "eyebrow": "Ismael Blandon Moreno · Desarrollador independiente",
     "title": "Desarrollador Full-Stack con IA para startups y pequeños negocios",
@@ -77,7 +81,11 @@
       ]
     ],
     "stack": "Las herramientas detrás del trabajo",
-    "process": ["Definir el alcance", "Construir y revisar", "Probar y lanzar"]
+    "process": [
+      "Definir el alcance",
+      "Construir y revisar",
+      "Probar y lanzar"
+    ]
   },
   "projectIntro": "Una selección de proyectos funcionales. Explora sus demos y su código.",
   "pawly": "Pawly — Red social para mascotas",
