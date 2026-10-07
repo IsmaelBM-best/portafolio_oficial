@@ -10,7 +10,18 @@ import trivia from "../assets/trivia-preview-960.jpg";
 import triviaLarge from "../assets/trivia-preview-1600.jpg";
 import pawly from "../assets/pawly-preview-960.jpg";
 import pawlyLarge from "../assets/pawly-preview-1600.jpg";
+import commerce from "../assets/commerce-preview-960.jpg";
+import commerceLarge from "../assets/commerce-preview-1600.jpg";
 const projects = computed(() => [
+  {
+    title: c.value.projects.commerceTitle,
+    description: c.value.projects.commerceDescription,
+    image: commerce,
+    srcSet: `${commerce} 960w, ${commerceLarge} 1600w`,
+    url: "https://academlo-e-comerce.netlify.app/",
+    code: "https://github.com/IsmaelBM-best/E-commerceG23",
+    tag: c.value.projects.commerceTag,
+  },
   {
     title: c.value.projects.titulo_proyecto_uno,
     description: c.value.projects.descripcion_proyecto_uno,

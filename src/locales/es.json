@@ -8,7 +8,10 @@
     "ver": "Ver",
     "codigo": "Código",
     "titulo_proyecto_tres": "Ismael Trivia — Quiz Arcade",
-    "descripcion_proyecto_tres": "Minijuego bilingüe con 70 preguntas, siete categorías y rondas mixtas. Dificultad configurable, modos con tiempo o práctica, puntajes, rachas, revisión de respuestas e historial local."
+    "descripcion_proyecto_tres": "Minijuego bilingüe con 70 preguntas, siete categorías y rondas mixtas. Dificultad configurable, modos con tiempo o práctica, puntajes, rachas, revisión de respuestas e historial local.",
+    "commerceTitle": "Ib.Commerce — Dashboard de compras",
+    "commerceDescription": "Demo de ecommerce bilingüe con dashboard cyberpunk, 16 productos fotografiados, promociones automáticas, favoritos, bolsa persistente y checkout. Incluye un estudio local de ventas e historial de pedidos; las compras son simuladas.",
+    "commerceTag": "Ecommerce · Dashboard interactivo · JavaScript"
   },
   "contact": {
     "titulo": "Contáctame",
