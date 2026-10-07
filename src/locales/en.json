@@ -34,10 +34,11 @@
   },
   "nav": [
     "Home",
-    "About",
+    "Experience",
     "Projects",
+    "Credentials",
     "Services",
-    "Contact me"
+    "Contact"
   ],
   "hero": {
     "eyebrow": "Ismael Blandon Moreno · Independent developer",
@@ -62,7 +63,7 @@
     "remote": "Remote from Colombia, with working hours compatible with U.S. teams."
   },
   "services": {
-    "eyebrow": "03 / HOW I CAN HELP",
+    "eyebrow": "04 / HOW I CAN HELP",
     "title": "A clear scope. A working product.",
     "intro": "Start with what your business needs. We’ll define the simplest useful version and build from there.",
     "items": [
@@ -95,7 +96,7 @@
   "pawlyDescription": "An Android social app for pets, built by Ismael with AI-assisted development and Claude. Its public site showcases pet profiles, photo and video posts, messaging and AI publication checks.",
   "pawlyTag": "Mobile app · AI-assisted development · Claude",
   "contactNew": {
-    "eyebrow": "04 / LET’S BUILD",
+    "eyebrow": "05 / LET’S BUILD",
     "title": "Tell me what you need built.",
     "intro": "A website, an MVP, an AI workflow, or a product that needs a developer. Tell me your goal, what already exists and your timeline.",
     "note": "This form opens WhatsApp with your message ready to review. Nothing is sent automatically. Prefer email? Use the address below.",
@@ -103,5 +104,163 @@
     "message": "What do you need built?",
     "placeholder": "What are you building? Share the scope, timeline and budget if you have one.",
     "ready": "Your message is ready in WhatsApp. Review it there before sending."
+  },
+  "discovery": {
+    "titleA": "Your next idea.",
+    "titleB": "Built to work.",
+    "role": "FULL-STACK DEVELOPER + AI AUTOMATION",
+    "available": "Available to start immediately",
+    "cv": "Read my CV",
+    "explore": "There is more behind the interface.",
+    "scroll": "Scroll to discover",
+    "aboutEyebrow": "01 / EXPERIENCE, IN CONTEXT",
+    "aboutTitle": "Good software starts with understanding people.",
+    "aboutLead": "Four years building software. Three at Coco Tecnologías. A background that connects product development with the people who use it.",
+    "aboutPrompt": "Follow the story, then explore the work that brings it to life.",
+    "chapters": [
+      {
+        "label": "01 / BUILD",
+        "title": "From a requirement to a working product.",
+        "company": "Coco Tecnologías · Software Developer · 3 years",
+        "text": "Healthcare interfaces, diagnostic multi-scheduling and surgery scheduling. My work combines frontend and backend development, debugging and improvements to existing software.",
+        "detailTitle": "Look closer at the work",
+        "detail": "I translate business and user needs into technical solutions, implement interfaces, resolve application issues and collaborate on software improvements. The focus is on helping users complete their work clearly."
+      },
+      {
+        "label": "02 / LISTEN",
+        "title": "The person using it is part of the solution.",
+        "company": "User support · Customer communication · Remote collaboration",
+        "text": "At Coco, I worked directly with users and support tickets. Before that, customer-facing roles at Carulla and Teleperformance strengthened how I communicate and solve problems.",
+        "detailTitle": "The experience beyond development",
+        "detail": "One year at Carulla, six months supporting the North American Amazon line at Teleperformance, and virtual assistance for a real estate professional. That experience includes chats, emails, appointments and explaining solutions to non-technical people."
+      },
+      {
+        "label": "03 / CONNECT",
+        "title": "Make technology useful in everyday work.",
+        "company": "AI implementation · Workflow design · API integrations",
+        "text": "I combine software development with AI-assisted workflows to investigate problems, build, debug, document and improve practical business processes.",
+        "detailTitle": "Tools, with a purpose",
+        "detail": "My workflows include Claude, Copilot, ChatGPT, Codex, Gemini and Grok, as well as AI connectors and tools such as Higgsfield, Canva, v0, Google Calendar and email. I review and test what ships."
+      }
+    ],
+    "storyLink": "Explore my projects",
+    "storyCv": "See the full experience in my CV",
+    "projectsEyebrow": "02 / THE WORK, UP CLOSE",
+    "projectsTitle": "Explore the product. Discover the thinking.",
+    "projectsIntro": "Four different products. One approach: clear interactions, useful features and attention to the details.",
+    "projectDetails": "Behind the build",
+    "previous": "Previous project",
+    "next": "Next project",
+    "select": "Select project",
+    "keyboard": "Use the arrows or swipe to explore.",
+    "projectChallenge": "The idea",
+    "projectFocus": "What I focused on",
+    "projectFeatures": "Explore the experience",
+    "close": "Close",
+    "demo": "Open project",
+    "source": "View code",
+    "credentialsEyebrow": "03 / THE FOUNDATION",
+    "credentialsTitle": "The experience. The learning. The evidence.",
+    "credentialsIntro": "A closer look at my background, with the original certificates and a CV you can take with you.",
+    "resumeLabel": "CURRICULUM VITAE / ENGLISH",
+    "resumeTitle": "The full picture, in two pages.",
+    "resumeText": "Software development, AI implementation, user support and remote collaboration. My experience, in one place.",
+    "resumeNote": "English · 2 pages · PDF",
+    "open": "Open PDF",
+    "download": "Download",
+    "preview": "Preview certificate",
+    "original": "Original certificate",
+    "publicCopy": "Public copy · ID number hidden",
+    "pdfHint": "The preview shows the first page. Open the PDF to view or download the document.",
+    "certificateTitles": [
+      "Full Stack Web Development",
+      "Front-End Development with React",
+      "Foundations in HTML, CSS & JavaScript",
+      "Academic high school diploma"
+    ],
+    "certificateIssuers": [
+      "Academlo",
+      "Academlo",
+      "Academlo",
+      "I. E. Eduardo Ortega Arango"
+    ],
+    "certificateNotes": [
+      "Completed July 24, 2023",
+      "Completed April 19, 2023",
+      "Completed February 21, 2023",
+      "Awarded December 1, 2019"
+    ],
+    "toolGroups": [
+      "Development",
+      "AI & automation",
+      "Design & collaboration"
+    ],
+    "toolIntros": [
+      "The stack I use to build and connect web products.",
+      "AI-assisted development, workflow design and connected tools.",
+      "The tools behind UI work, coordination and communication."
+    ],
+    "projectCases": [
+      {
+        "idea": "Turn an almost empty ecommerce exercise into a store people can explore from first product to order confirmation.",
+        "focus": "A coherent dashboard, understandable navigation, automatic promotion pricing and a complete simulated shopping flow.",
+        "features": [
+          "16 photographed products across four collections",
+          "Saved finds, bag, coupon and reviewed checkout",
+          "Local seller studio and persistent demo orders"
+        ],
+        "stack": [
+          "JavaScript",
+          "HTML / CSS",
+          "Local catalog",
+          "Native animations"
+        ]
+      },
+      {
+        "idea": "Make choosing a specialty, patient and appointment time a clear sequence.",
+        "focus": "Readable availability, validation and confirmation, plus rescheduling, cancellation and calendar export.",
+        "features": [
+          "Five specialties with photographed cards",
+          "Guided appointment booking and patient records",
+          "English / Spanish and local demo persistence"
+        ],
+        "stack": [
+          "Vue.js",
+          "JavaScript",
+          "Scheduling logic",
+          "Responsive UI"
+        ]
+      },
+      {
+        "idea": "Turn a trivia website into a focused question minigame.",
+        "focus": "Quick pack selection, clear answer feedback and a round that feels playable on both desktop and mobile.",
+        "features": [
+          "70 questions, seven categories and mixed rounds",
+          "Timed or practice rounds and configurable difficulty",
+          "Scoring, streaks, answer reviews and local records"
+        ],
+        "stack": [
+          "Vue.js",
+          "JavaScript",
+          "Game state",
+          "Interactive UX"
+        ]
+      },
+      {
+        "idea": "A social space where pet profiles are at the center of the experience.",
+        "focus": "An Android project built with AI-assisted development and Claude, presented through its public product site.",
+        "features": [
+          "Pet profiles and photo / video posts",
+          "Messaging and social interactions",
+          "AI publication checks"
+        ],
+        "stack": [
+          "Android app",
+          "AI-assisted development",
+          "Claude",
+          "Product presentation"
+        ]
+      }
+    ]
   }
 }

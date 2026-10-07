@@ -2,6 +2,9 @@
 import { ref, watchEffect } from "vue";
 import HeaderBriefcase from "./components/HeaderBriefcase.vue";
 import MainBriefcase from "./components/MainBriefcase.vue";
+import PortfolioAtmosphere from "./components/PortfolioAtmosphere.vue";
+import { usePortfolioMotion } from "./composables/usePortfolioMotion.js";
+usePortfolioMotion();
 let saved = "en";
 try {
   saved = localStorage.getItem("lang") || "en";
@@ -24,5 +27,7 @@ watchEffect(() => {
   ><HeaderBriefcase
     :isSpanish="isSpanish"
     @changeLanguage="setLanguage"
-  /><MainBriefcase :isSpanish="isSpanish" />
+  /><MainBriefcase :isSpanish="isSpanish" /><PortfolioAtmosphere
+    :isSpanish="isSpanish"
+  />
 </template>

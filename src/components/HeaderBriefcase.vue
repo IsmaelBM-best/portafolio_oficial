@@ -6,7 +6,14 @@ const props = defineProps({ isSpanish: Boolean });
 const emit = defineEmits(["changeLanguage"]);
 const open = ref(false);
 const c = computed(() => (props.isSpanish ? es : en));
-const ids = ["start", "about_me", "projects", "skills", "contact"];
+const ids = [
+  "start",
+  "about_me",
+  "projects",
+  "credentials",
+  "skills",
+  "contact",
+];
 </script>
 <template>
   <header class="site-header">
@@ -23,6 +30,7 @@ const ids = ["start", "about_me", "projects", "skills", "contact"];
         v-for="(label, i) in c.nav"
         :key="ids[i]"
         :href="'#' + ids[i]"
+        :data-section-link="ids[i]"
         @click="open = false"
         >{{ label }}</a
       >

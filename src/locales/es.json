@@ -34,10 +34,11 @@
   },
   "nav": [
     "Inicio",
-    "Sobre mí",
+    "Experiencia",
     "Proyectos",
+    "Credenciales",
     "Servicios",
-    "Contáctame"
+    "Contacto"
   ],
   "hero": {
     "eyebrow": "Ismael Blandon Moreno · Desarrollador independiente",
@@ -62,7 +63,7 @@
     "remote": "Remoto desde Colombia, con horarios compatibles con equipos de EE. UU."
   },
   "services": {
-    "eyebrow": "03 / CÓMO PUEDO AYUDARTE",
+    "eyebrow": "04 / CÓMO PUEDO AYUDAR",
     "title": "Un alcance claro. Un producto funcional.",
     "intro": "Partimos de lo que necesita tu negocio. Definimos la primera versión útil y construimos desde ahí.",
     "items": [
@@ -95,7 +96,7 @@
   "pawlyDescription": "Una app Android de red social para mascotas, construida por Ismael con desarrollo asistido por IA y Claude. Su sitio público muestra perfiles de mascotas, publicaciones de fotos y videos, mensajes y revisión de publicaciones con IA.",
   "pawlyTag": "App móvil · Desarrollo asistido por IA · Claude",
   "contactNew": {
-    "eyebrow": "04 / CONSTRUYAMOS",
+    "eyebrow": "05 / CONSTRUYAMOS",
     "title": "Cuéntame qué necesitas construir.",
     "intro": "Un sitio, un MVP, un flujo con IA o un producto que necesita un desarrollador. Cuéntame el objetivo, lo que ya existe y tus plazos.",
     "note": "Este formulario abre WhatsApp con tu mensaje listo para revisar. No se envía automáticamente. Si prefieres email, usa la dirección de abajo.",
@@ -103,5 +104,163 @@
     "message": "¿Qué necesitas construir?",
     "placeholder": "¿Qué quieres construir? Comparte el alcance, plazo y presupuesto si lo tienes.",
     "ready": "Tu mensaje está listo en WhatsApp. Revísalo allí antes de enviarlo."
+  },
+  "discovery": {
+    "titleA": "Tu próxima idea.",
+    "titleB": "Lista para funcionar.",
+    "role": "DESARROLLADOR FULL-STACK + AUTOMATIZACIÓN CON IA",
+    "available": "Disponibilidad inmediata",
+    "cv": "Leer mi CV",
+    "explore": "Hay más detrás de la interfaz.",
+    "scroll": "Desplázate y descubre",
+    "aboutEyebrow": "01 / EXPERIENCIA, CON CONTEXTO",
+    "aboutTitle": "El buen software empieza entendiendo a las personas.",
+    "aboutLead": "Cuatro años construyendo software. Tres en Coco Tecnologías. Una trayectoria que conecta el desarrollo de productos con las personas que los usan.",
+    "aboutPrompt": "Sigue la historia y explora los proyectos que la llevan a la práctica.",
+    "chapters": [
+      {
+        "label": "01 / CONSTRUIR",
+        "title": "De un requerimiento a un producto que funciona.",
+        "company": "Coco Tecnologías · Desarrollador de software · 3 años",
+        "text": "Interfaces de salud, multiagendamiento diagnóstico y programación de cirugías. Mi trabajo combina frontend y backend, depuración y mejoras de software existente.",
+        "detailTitle": "Mira más de cerca",
+        "detail": "Traduzco necesidades de negocio y de usuarios en soluciones técnicas, implemento interfaces, resuelvo problemas y colaboro en mejoras del software. El enfoque está en ayudar a las personas a completar su trabajo con claridad."
+      },
+      {
+        "label": "02 / ESCUCHAR",
+        "title": "Quien lo usa también es parte de la solución.",
+        "company": "Soporte a usuarios · Comunicación · Colaboración remota",
+        "text": "En Coco trabajé directamente con usuarios y tickets de soporte. Antes, las funciones de atención en Carulla y Teleperformance fortalecieron mi comunicación y resolución de problemas.",
+        "detailTitle": "La experiencia más allá del desarrollo",
+        "detail": "Un año en Carulla, seis meses en la línea norteamericana de Amazon en Teleperformance y asistencia virtual para un profesional inmobiliario. Esa experiencia incluye chats, correos, citas y explicar soluciones a personas no técnicas."
+      },
+      {
+        "label": "03 / CONECTAR",
+        "title": "Hacer útil la tecnología en el trabajo diario.",
+        "company": "Implementación de IA · Diseño de flujos · Integraciones API",
+        "text": "Combino desarrollo de software y flujos asistidos por IA para investigar problemas, construir, depurar, documentar y mejorar procesos de negocio concretos.",
+        "detailTitle": "Herramientas con un propósito",
+        "detail": "Uso Claude, Copilot, ChatGPT, Codex, Gemini y Grok, además de conectores de IA y herramientas como Higgsfield, Canva, v0, Google Calendar y correo. Reviso y pruebo lo que entrego."
+      }
+    ],
+    "storyLink": "Explorar mis proyectos",
+    "storyCv": "Ver toda la experiencia en mi CV",
+    "projectsEyebrow": "02 / EL TRABAJO, DE CERCA",
+    "projectsTitle": "Explora el producto. Descubre el razonamiento.",
+    "projectsIntro": "Cuatro productos diferentes. Un enfoque: interacciones claras, funciones útiles y atención a los detalles.",
+    "projectDetails": "Detrás del desarrollo",
+    "previous": "Proyecto anterior",
+    "next": "Proyecto siguiente",
+    "select": "Elegir proyecto",
+    "keyboard": "Usa las flechas o desliza para explorar.",
+    "projectChallenge": "La idea",
+    "projectFocus": "En qué me enfoqué",
+    "projectFeatures": "Explora la experiencia",
+    "close": "Cerrar",
+    "demo": "Abrir proyecto",
+    "source": "Ver código",
+    "credentialsEyebrow": "03 / LOS FUNDAMENTOS",
+    "credentialsTitle": "La experiencia. El aprendizaje. La evidencia.",
+    "credentialsIntro": "Conoce mejor mi trayectoria con los certificados originales y un CV que puedes llevar contigo.",
+    "resumeLabel": "CURRICULUM VITAE / INGLÉS",
+    "resumeTitle": "La historia completa, en dos páginas.",
+    "resumeText": "Desarrollo de software, implementación de IA, soporte a usuarios y colaboración remota. Mi experiencia, en un solo lugar.",
+    "resumeNote": "Inglés · 2 páginas · PDF",
+    "open": "Abrir PDF",
+    "download": "Descargar",
+    "preview": "Ver certificado",
+    "original": "Certificado original",
+    "publicCopy": "Copia pública · Identificación oculta",
+    "pdfHint": "La vista previa muestra la primera página. Abre el PDF para ver o descargar el documento.",
+    "certificateTitles": [
+      "Desarrollo Web Full Stack",
+      "Desarrollo Front-End con React",
+      "Fundamentos de HTML, CSS y JavaScript",
+      "Diploma de Bachiller Académico"
+    ],
+    "certificateIssuers": [
+      "Academlo",
+      "Academlo",
+      "Academlo",
+      "I. E. Eduardo Ortega Arango"
+    ],
+    "certificateNotes": [
+      "Finalizado el 24 de julio de 2023",
+      "Finalizado el 19 de abril de 2023",
+      "Finalizado el 21 de febrero de 2023",
+      "Otorgado el 1 de diciembre de 2019"
+    ],
+    "toolGroups": [
+      "Desarrollo",
+      "IA y automatización",
+      "Diseño y colaboración"
+    ],
+    "toolIntros": [
+      "Las herramientas con las que construyo y conecto productos web.",
+      "Desarrollo asistido por IA, diseño de flujos y herramientas conectadas.",
+      "Las herramientas para interfaces, coordinación y comunicación."
+    ],
+    "projectCases": [
+      {
+        "idea": "Convertir un ejercicio de ecommerce casi vacío en una tienda que se pueda explorar desde el primer producto hasta confirmar el pedido.",
+        "focus": "Un dashboard coherente, navegación entendible, precios promocionales automáticos y un flujo completo de compra simulada.",
+        "features": [
+          "16 productos fotografiados en cuatro colecciones",
+          "Favoritos, bolsa, cupón y revisión antes de confirmar",
+          "Estudio local de ventas y pedidos demo persistentes"
+        ],
+        "stack": [
+          "JavaScript",
+          "HTML / CSS",
+          "Catálogo local",
+          "Animaciones nativas"
+        ]
+      },
+      {
+        "idea": "Hacer que elegir especialidad, paciente y horario sea una secuencia clara.",
+        "focus": "Disponibilidad legible, validación y confirmación, además de reprogramación, cancelación y exportación al calendario.",
+        "features": [
+          "Cinco especialidades con tarjetas fotografiadas",
+          "Agendamiento guiado y registro de pacientes",
+          "Inglés / español y persistencia local de la demo"
+        ],
+        "stack": [
+          "Vue.js",
+          "JavaScript",
+          "Lógica de citas",
+          "UI responsiva"
+        ]
+      },
+      {
+        "idea": "Transformar una web de trivia en un minijuego de preguntas enfocado.",
+        "focus": "Selección rápida de categorías, respuestas claras y una ronda que se sienta jugable en escritorio y móvil.",
+        "features": [
+          "70 preguntas, siete categorías y rondas mixtas",
+          "Rondas con tiempo o práctica y dificultad configurable",
+          "Puntajes, rachas, revisión e historial local"
+        ],
+        "stack": [
+          "Vue.js",
+          "JavaScript",
+          "Estado del juego",
+          "UX interactiva"
+        ]
+      },
+      {
+        "idea": "Un espacio social en el que los perfiles de mascotas sean protagonistas.",
+        "focus": "Un proyecto Android construido con desarrollo asistido por IA y Claude, presentado mediante su sitio público.",
+        "features": [
+          "Perfiles de mascotas y publicaciones de fotos / videos",
+          "Mensajes e interacciones sociales",
+          "Revisión de publicaciones con IA"
+        ],
+        "stack": [
+          "App Android",
+          "Desarrollo asistido por IA",
+          "Claude",
+          "Presentación del producto"
+        ]
+      }
+    ]
   }
 }

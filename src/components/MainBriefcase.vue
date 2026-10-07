@@ -1,8 +1,9 @@
 <script setup>
-import AboutMe from "./AboutMe.vue";
+import AboutMe from "./ExperienceJourney.vue";
 import SkillsBriefcase from "./SkillsBriefcase.vue";
 import StartBriefcase from "./StartBriefcase.vue";
-import MyProjects from "./MyProjects.vue";
+import MyProjects from "./ProjectGallery.vue";
+import CredentialsLibrary from "./CredentialsLibrary.vue";
 import ContactMe from "./ContactMe.vue";
 import Footer from "./Footer.vue";
 defineProps({ isSpanish: Boolean });
@@ -11,9 +12,11 @@ defineProps({ isSpanish: Boolean });
   <main id="main">
     <StartBriefcase :isSpanish="isSpanish" /><AboutMe
       :isSpanish="isSpanish"
-    /><MyProjects :isSpanish="isSpanish" /><SkillsBriefcase
+    /><MyProjects :isSpanish="isSpanish" /><CredentialsLibrary
       :isSpanish="isSpanish"
-    /><ContactMe :isSpanish="isSpanish" />
+    /><SkillsBriefcase :isSpanish="isSpanish" /><ContactMe
+      :isSpanish="isSpanish"
+    />
   </main>
   <Footer :isSpanish="isSpanish" />
 </template>
