@@ -30,3 +30,13 @@ New files: ExperienceJourney.vue, ProjectGallery.vue, CredentialsLibrary.vue, He
 References studied (independently implemented in the portfolio palette): https://codepen.io/isladjan/pen/abdyPBw, https://codepen.io/edmundojr/pen/eNPJVW and https://codepen.io/gayane-gasparyan/pen/jOmaBQK.
 
 Verified October 7, 2026 in the user-run Vite server at 127.0.0.1:5173: project selection, project/certificate dialogs, Escape and focus return, tools tabs, both languages and 320/390/768-pixel layouts without horizontal overflow. The downloaded Full Stack certificate matches its original hash. The managed-session verification build uses preserveSymlinks and compiled Sass because native Windows realpath is unavailable here; normal repository configuration remains unchanged.
+
+## Layered tech motion and compact orbit gallery
+
+Native SVG phones, keyboards, mice and chips now move between rear and front planes as the hero and sticky experience scene scroll. A small requestAnimationFrame rig interpolates deterministic poses and rebinds after DOM changes. Reduced motion freezes the scene. The portrait uses the original PNG in two aligned layers: a masked body and an unclipped upper layer, so the head and shoulders protrude above the card.
+
+The project gallery uses the reference's five-sided preserve-3d ring with 72-degree face spacing and perspective, with four real projects plus a clearly labeled next-idea face. Cards are compact (320 px desktop, 200/170 px mobile). Following the owner's feedback, the backward cycle reset and overshooting easing were replaced by a complete 360-degree loop with smoother timing. There is no pause/resume button. Hover and keyboard focus pause temporarily; exiting resumes automatically. Images are decoded before starting, and the UI samples the native animation clock rather than reading layout every animation frame. Descriptions/actions remain in a stable 2D panel.
+
+CV/certificate borders use the Magic Card rotating-gradient mechanism with a separate visible glow, a 2.5-second cycle, the portfolio palette and unclipped outer surfaces. No animation libraries, CDN scripts or new runtime dependencies were downloaded or added.
+
+Run native motion tests with npm test. Ten tests cover forward/reverse scroll, layer crossings, bounded mobile tracks, reduced motion, all orbit holds, monotonic easing, shortest manual turns and a seamless cycle boundary.

@@ -4,7 +4,9 @@ import HeaderBriefcase from "./components/HeaderBriefcase.vue";
 import MainBriefcase from "./components/MainBriefcase.vue";
 import PortfolioAtmosphere from "./components/PortfolioAtmosphere.vue";
 import { usePortfolioMotion } from "./composables/usePortfolioMotion.js";
+import { useTechScroll } from "./composables/useTechScroll.js";
 usePortfolioMotion();
+useTechScroll();
 let saved = "en";
 try {
   saved = localStorage.getItem("lang") || "en";

@@ -53,19 +53,30 @@ const c = computed(() => (props.isSpanish ? es : en));
       </div>
     </div>
     <aside class="hero-card reveal" data-tilt>
-      <div class="profile-caption">
-        <span>IB / DEVELOPER PROFILE</span><span aria-hidden="true">● ● ●</span>
-      </div>
       <div class="portrait">
+        <div class="portrait-mask" aria-hidden="true">
+          <img
+            :src="portrait"
+            alt=""
+            width="396"
+            height="629"
+            class="portrait-body"
+          />
+        </div>
         <img
           :src="portrait"
           alt="Ismael Blandon Moreno"
           width="396"
           height="629"
           fetchpriority="high"
+          class="portrait-popout"
         />
       </div>
       <div class="portrait-info">
+        <div class="profile-caption">
+          <span>IB / DEVELOPER PROFILE</span
+          ><span aria-hidden="true">● ● ●</span>
+        </div>
         <span class="eyebrow">FULL-STACK + AI</span>
         <h2>Ismael Blandon Moreno</h2>
         <p>{{ c.hero.note }}</p>

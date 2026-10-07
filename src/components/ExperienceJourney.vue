@@ -3,26 +3,38 @@ import { computed } from "vue";
 import es from "../locales/es.json";
 import en from "../locales/en.json";
 import resume from "../assets/documents/ismael-blandon-cv.pdf";
+import TechScene from "./TechScene.vue";
 const props = defineProps({ isSpanish: Boolean });
 const c = computed(() => (props.isSpanish ? es : en).discovery);
 </script>
 <template>
   <section id="about_me" class="section experience-journey">
     <div class="journey-sticky reveal">
-      <p class="eyebrow">{{ c.aboutEyebrow }}</p>
-      <h2>{{ c.aboutTitle }}</h2>
-      <p class="lead">{{ c.aboutLead }}</p>
-      <p>{{ c.aboutPrompt }}</p>
-      <div class="journey-index" aria-hidden="true">
-        <span>BUILD</span><i></i><span>LISTEN</span><i></i><span>CONNECT</span>
+      <div class="workbench-shell">
+        <TechScene variant="workbench" />
+        <div class="workbench-plate" aria-hidden="true">
+          <div class="workbench-toolbar">
+            <span>ib. / EXPERIENCE</span><span>● ● ●</span>
+          </div>
+        </div>
+        <div class="workbench-copy">
+          <p class="eyebrow">{{ c.aboutEyebrow }}</p>
+          <h2>{{ c.aboutTitle }}</h2>
+          <p class="lead">{{ c.aboutLead }}</p>
+          <p>{{ c.aboutPrompt }}</p>
+          <div class="journey-index" aria-hidden="true">
+            <span>BUILD</span><i></i><span>LISTEN</span><i></i
+            ><span>CONNECT</span>
+          </div>
+          <a
+            class="text-link"
+            :href="resume"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ c.storyCv }} ↗</a
+          >
+        </div>
       </div>
-      <a
-        class="text-link"
-        :href="resume"
-        target="_blank"
-        rel="noopener noreferrer"
-        >{{ c.storyCv }} ↗</a
-      >
     </div>
     <div class="journey-chapters">
       <article

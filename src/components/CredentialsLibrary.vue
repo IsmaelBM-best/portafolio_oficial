@@ -59,37 +59,39 @@ function close() {
       <p>{{ c.credentialsIntro }}</p>
     </div>
     <article class="resume-card magic-card reveal" data-tilt>
-      <div class="resume-visual">
-        <img
-          :src="resumeCover"
-          :alt="
-            isSpanish
-              ? 'Portada gráfica del CV de Ismael'
-              : 'Graphic cover for Ismael’s CV'
-          "
-          width="680"
-          height="500"
-          loading="lazy"
-        />
-      </div>
-      <div class="resume-copy">
-        <p class="eyebrow">{{ c.resumeLabel }}</p>
-        <h3>{{ c.resumeTitle }}</h3>
-        <p>{{ c.resumeText }}</p>
-        <span class="document-meta">{{ c.resumeNote }}</span>
-        <div class="actions">
-          <a
-            class="button primary"
-            :href="resume"
-            target="_blank"
-            rel="noopener noreferrer"
-            >{{ c.open }} ↗</a
-          ><a
-            class="button secondary"
-            :href="resume"
-            download="Ismael-Blandon-CV.pdf"
-            >{{ c.download }} ↓</a
-          >
+      <div class="resume-surface">
+        <div class="resume-visual">
+          <img
+            :src="resumeCover"
+            :alt="
+              isSpanish
+                ? 'Portada gráfica del CV de Ismael'
+                : 'Graphic cover for Ismael’s CV'
+            "
+            width="680"
+            height="500"
+            loading="lazy"
+          />
+        </div>
+        <div class="resume-copy">
+          <p class="eyebrow">{{ c.resumeLabel }}</p>
+          <h3>{{ c.resumeTitle }}</h3>
+          <p>{{ c.resumeText }}</p>
+          <span class="document-meta">{{ c.resumeNote }}</span>
+          <div class="actions">
+            <a
+              class="button primary"
+              :href="resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{ c.open }} ↗</a
+            ><a
+              class="button secondary"
+              :href="resume"
+              download="Ismael-Blandon-CV.pdf"
+              >{{ c.download }} ↓</a
+            >
+          </div>
         </div>
       </div>
     </article>

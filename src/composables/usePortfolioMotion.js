@@ -8,7 +8,14 @@ export function usePortfolioMotion() {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     const fine = matchMedia("(hover: hover) and (pointer: fine)");
     const root = document.documentElement;
-    const sections = [...document.querySelectorAll("main > section[id]")];
+    if (root.dataset.portfolioAnchorRestored !== "true") {
+      root.dataset.portfolioAnchorRestored = "true";
+      const destination = document.getElementById(location.hash.slice(1));
+      if (destination?.matches("main > section[id]"))
+        requestAnimationFrame(() =>
+          destination.scrollIntoView({ behavior: "instant", block: "start" }),
+        );
+    }
     const parallax = [...document.querySelectorAll("[data-depth]")];
     let frame = 0,
       pointerTarget = null,
@@ -41,10 +48,17 @@ export function usePortfolioMotion() {
         ),
       { threshold: 0.05 },
     );
-    document
-      .querySelectorAll(".magic-card")
-      .forEach((card) => borders.observe(card));
+    const seenBorders = new WeakSet();
+    const observeBorders = () =>
+      document.querySelectorAll(".magic-card").forEach((card) => {
+        if (!seenBorders.has(card)) {
+          seenBorders.add(card);
+          borders.observe(card);
+        }
+      });
+    observeBorders();
     const update = () => {
+      const sections = [...document.querySelectorAll("main > section[id]")];
       frame = 0;
       const maximum = Math.max(1, root.scrollHeight - innerHeight);
       root.style.setProperty("--reading-progress", String(scrollY / maximum));
@@ -153,6 +167,7 @@ export function usePortfolioMotion() {
     );
     const mutation = new MutationObserver(() => {
       reveal();
+      observeBorders();
       schedule();
     });
     mutation.observe(document.querySelector("main"), {
