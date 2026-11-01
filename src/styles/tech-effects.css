@@ -318,7 +318,7 @@
   height: 300px;
   touch-action: pan-y;
   --ring-width: 320px;
-  --ring-radius: calc(var(--ring-width) * 0.8055555556);
+  --ring-radius: calc(var(--ring-width) * 0.8660254);
 }
 .project-orbit-mount {
   position: absolute;
@@ -334,7 +334,7 @@
   inset: 0;
   transform-style: preserve-3d;
   transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(0deg);
-  animation: project-orbit 10s infinite cubic-bezier(1, 0.015, 0.295, 1.225)
+  animation: project-orbit 12s infinite cubic-bezier(1, 0.015, 0.295, 1.225)
     forwards;
   will-change: transform;
 }
@@ -473,24 +473,6 @@
     9px ui-monospace,
     monospace;
   color: #a7bb94;
-}
-@keyframes project-orbit {
-  0%,
-  15% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(0deg);
-  }
-  25%,
-  40% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-72deg);
-  }
-  50%,
-  65% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-144deg);
-  }
-  75%,
-  90% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-216deg);
-  }
 }
 /* Original Magic Card mechanism: rotating gradient plus a separate visible glow. */
 @property --magic-turn {
@@ -901,24 +883,28 @@
 }
 @keyframes project-orbit {
   0%,
-  12% {
+  10% {
     transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(0deg);
   }
-  20%,
-  32% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-72deg);
+  16.667%,
+  26.667% {
+    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-60deg);
   }
-  40%,
-  52% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-144deg);
+  33.333%,
+  43.333% {
+    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-120deg);
   }
-  60%,
-  72% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-216deg);
+  50%,
+  60% {
+    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-180deg);
   }
-  80%,
-  92% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-288deg);
+  66.667%,
+  76.667% {
+    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-240deg);
+  }
+  83.333%,
+  93.333% {
+    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-300deg);
   }
   100% {
     transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-360deg);

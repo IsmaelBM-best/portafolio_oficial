@@ -1,5 +1,8 @@
 {
   "projects": {
+    "pleonTitle": "PLEON — Shopify Online Store",
+    "pleonDescription": "A live online store with a product catalog, search, saved finds, product options, a shopping bag and a path to Shopify checkout. It has its own visual identity and Buñuelo to help shoppers.",
+    "pleonVisit": "Visit live store",
     "titulo": "My",
     "proyectos": "Projects",
     "trabajos": "A selection of my most outstanding work.",
@@ -147,7 +150,7 @@
     "storyCv": "See the full experience in my CV",
     "projectsEyebrow": "02 / THE WORK, UP CLOSE",
     "projectsTitle": "Explore the product. Discover the thinking.",
-    "projectsIntro": "Four different products. One approach: clear interactions, useful features and attention to the details.",
+    "projectsIntro": "Five projects, including a live Shopify store. Clear interactions, useful features and attention to the details.",
     "projectDetails": "Behind the build",
     "previous": "Previous project",
     "next": "Next project",
@@ -201,6 +204,21 @@
       "The tools behind UI work, coordination and communication."
     ],
     "projectCases": [
+      {
+        "idea": "Build a real shopping experience for everyday products, from discovering an item to reviewing the bag and continuing to checkout.",
+        "focus": "Brand presentation, catalog navigation, product options and clear paths to purchase or WhatsApp support.",
+        "features": [
+          "Public catalog with search and product pages",
+          "Saved finds, variants and shopping bag",
+          "Shopify checkout and Buñuelo shopper guidance"
+        ],
+        "stack": [
+          "Shopify",
+          "Live store",
+          "Ecommerce",
+          "Shopping experience"
+        ]
+      },
       {
         "idea": "Turn an almost empty ecommerce exercise into a store people can explore from first product to order confirmation.",
         "focus": "A coherent dashboard, understandable navigation, automatic promotion pricing and a complete simulated shopping flow.",

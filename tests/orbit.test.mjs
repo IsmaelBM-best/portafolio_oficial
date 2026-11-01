@@ -5,11 +5,13 @@ import {
   orbitEase,
   shortestTurn,
   ORBIT_DURATION,
+  ORBIT_FACES,
+  ORBIT_STEP,
 } from "../src/motion/orbit.mjs";
 test("every face has a stable hold, including the final idea face", () => {
-  for (let i = 0; i < 5; i++) {
-    assert.equal(orbitFace(i * 2000), i);
-    assert.equal(orbitFace(i * 2000 + 1000), i);
+  for (let i = 0; i < ORBIT_FACES; i++) {
+    assert.equal(orbitFace(i * ORBIT_STEP), i);
+    assert.equal(orbitFace(i * ORBIT_STEP + 1000), i);
   }
 });
 test("the end and beginning of the turn have the same front face", () => {
@@ -26,7 +28,7 @@ test("easing advances monotonically without the reference overshoot", () => {
   }
 });
 test("manual navigation picks the shortest path across the cycle boundary", () => {
-  assert.equal(shortestTurn(-288, 0), -360);
-  assert.equal(shortestTurn(0, -288), 72);
-  assert.equal(shortestTurn(-72, -144), -144);
+  assert.equal(shortestTurn(-300, 0), -360);
+  assert.equal(shortestTurn(0, -300), 60);
+  assert.equal(shortestTurn(-60, -120), -120);
 });

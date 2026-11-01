@@ -1,5 +1,8 @@
 {
   "projects": {
+    "pleonTitle": "PLEON — Tienda online Shopify",
+    "pleonDescription": "Tienda online activa con catálogo de productos, búsqueda, favoritos, opciones de compra, bolsa y acceso al checkout de Shopify. Incluye una identidad visual propia y ayuda al comprador con Buñuelo.",
+    "pleonVisit": "Visitar tienda",
     "titulo": "Mis",
     "proyectos": "Proyectos",
     "trabajos": "Una selección de mis trabajos más destacados.",
@@ -147,7 +150,7 @@
     "storyCv": "Ver toda la experiencia en mi CV",
     "projectsEyebrow": "02 / EL TRABAJO, DE CERCA",
     "projectsTitle": "Explora el producto. Descubre el razonamiento.",
-    "projectsIntro": "Cuatro productos diferentes. Un enfoque: interacciones claras, funciones útiles y atención a los detalles.",
+    "projectsIntro": "Cinco proyectos, incluida una tienda Shopify activa. Interacciones claras, funciones útiles y atención a los detalles.",
     "projectDetails": "Detrás del desarrollo",
     "previous": "Proyecto anterior",
     "next": "Proyecto siguiente",
@@ -201,6 +204,21 @@
       "Las herramientas para interfaces, coordinación y comunicación."
     ],
     "projectCases": [
+      {
+        "idea": "Crear una experiencia de compra real para productos cotidianos, desde descubrir un artículo hasta revisar la bolsa y continuar al checkout.",
+        "focus": "Presentación de la marca, navegación del catálogo, opciones de producto y caminos claros hacia la compra o la atención por WhatsApp.",
+        "features": [
+          "Catálogo público con búsqueda y páginas de producto",
+          "Favoritos, variantes y bolsa de compras",
+          "Checkout de Shopify y ayuda al comprador con Buñuelo"
+        ],
+        "stack": [
+          "Shopify",
+          "Tienda activa",
+          "Ecommerce",
+          "Experiencia de compra"
+        ]
+      },
       {
         "idea": "Convertir un ejercicio de ecommerce casi vacío en una tienda que se pueda explorar desde el primer producto hasta confirmar el pedido.",
         "focus": "Un dashboard coherente, navegación entendible, precios promocionales automáticos y un flujo completo de compra simulada.",

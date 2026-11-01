@@ -20,6 +20,7 @@ import pawly from "../assets/pawly-preview-960.jpg";
 import pawlyLarge from "../assets/pawly-preview-1600.jpg";
 import commerce from "../assets/commerce-preview-960.jpg";
 import commerceLarge from "../assets/commerce-preview-1600.jpg";
+import pleon from "../assets/pleon-store-preview.png";
 
 const props = defineProps({ isSpanish: Boolean });
 const c = computed(() => (props.isSpanish ? es : en));
@@ -44,6 +45,15 @@ let observer,
   moveId = 0,
   alive = true;
 const projects = computed(() => [
+  {
+    title: c.value.projects.pleonTitle,
+    description: c.value.projects.pleonDescription,
+    image: pleon,
+    large: pleon,
+    url: "https://pleon-store.myshopify.com/",
+    tag: "SHOPIFY / LIVE STORE",
+    liveLabel: c.value.projects.pleonVisit,
+  },
   {
     title: c.value.projects.commerceTitle,
     description: c.value.projects.commerceDescription,
@@ -81,7 +91,9 @@ const projects = computed(() => [
   },
 ]);
 
-const current = computed(() => projects.value[Math.min(face.value, 3)]);
+const current = computed(() =>
+  projects.value[Math.min(face.value, projects.value.length - 1)],
+);
 const detail = computed(() =>
   selected.value === null
     ? null
@@ -136,7 +148,7 @@ function select(index) {
   const angle = matrix
     ? (Math.atan2(matrix.m31, matrix.m11) * 180) / Math.PI
     : 0;
-  const target = (index + 5) % 5;
+  const target = (index + 6) % 6;
   const token = ++moveId;
   manualTween?.cancel();
   manualBusy.value = true;
@@ -150,8 +162,8 @@ function select(index) {
     manualBusy.value = false;
     return;
   }
-  const radius = ring.value.offsetWidth * (145 / 180),
-    turn = shortestTurn(angle, -target * 72);
+  const radius = ring.value.offsetWidth * (Math.sqrt(3) / 2),
+    turn = shortestTurn(angle, -target * 60);
   manualTween = ring.value.animate(
     [
       { transform: from },
@@ -209,7 +221,7 @@ function leaveFocus(event) {
   if (!event.currentTarget.contains(event.relatedTarget)) focused.value = false;
 }
 async function openDetails() {
-  if (face.value > 3) return;
+  if (face.value >= projects.value.length) return;
   selected.value = face.value;
   await nextTick();
   dialog.value.showModal();
@@ -302,7 +314,7 @@ onBeforeUnmount(() => {
               ref="ring"
               class="project-orbit-ring"
               :class="{ 'is-paused': !running }"
-              :style="{ '--manual-angle': -face * 72 + 'deg' }"
+              :style="{ '--manual-angle': -face * 60 + 'deg' }"
               :data-rotation="running ? 'running' : 'paused'"
               aria-hidden="true"
             >
@@ -312,7 +324,7 @@ onBeforeUnmount(() => {
                 class="project-orbit-face"
                 :style="{
                   transform:
-                    'rotateY(' + i * 72 + 'deg) translateZ(var(--ring-radius))',
+                    'rotateY(' + i * 60 + 'deg) translateZ(var(--ring-radius))',
                 }"
               >
                 <img
@@ -324,14 +336,14 @@ onBeforeUnmount(() => {
                   decoding="async"
                 />
                 <div class="orbit-face-caption">
-                  <span>0{{ i + 1 }} / 04</span
+                  <span>0{{ i + 1 }} / 0{{ projects.length }}</span
                   ><strong>{{ project.title }}</strong>
                 </div>
               </div>
               <div
                 class="project-orbit-face orbit-idea"
                 style="
-                  transform: rotateY(288deg) translateZ(var(--ring-radius));
+                  transform: rotateY(300deg) translateZ(var(--ring-radius));
                 "
               >
                 <TechObject kind="chip" /><strong>{{
@@ -345,7 +357,7 @@ onBeforeUnmount(() => {
         <article class="project-brief" :aria-live="running ? 'off' : 'polite'">
           <Transition name="brief-swap" mode="out-in"
             ><div :key="face" class="brief-content">
-              <template v-if="face < 4"
+              <template v-if="face < projects.length"
                 ><p class="eyebrow">
                   {{ c.discovery.projectCases[face].stack.join(" · ") }}
                 </p>
@@ -358,8 +370,8 @@ onBeforeUnmount(() => {
                     :href="current.url"
                     target="_blank"
                     rel="noopener noreferrer"
-                    :aria-label="c.discovery.demo + ': ' + current.title"
-                    >{{ c.discovery.demo }} ↗</a
+                    :aria-label="(current.liveLabel || c.discovery.demo) + ': ' + current.title"
+                    >{{ current.liveLabel || c.discovery.demo }} ↗</a
                   ><a
                     v-if="current.code"
                     :href="current.code"
@@ -413,8 +425,8 @@ onBeforeUnmount(() => {
             :aria-label="
               isSpanish ? 'Elegir tu próxima idea' : 'Select your next idea'
             "
-            :aria-pressed="face === 4"
-            @click="select(4)"
+            :aria-pressed="face === projects.length"
+            @click="select(projects.length)"
           >
             <span></span>
           </button>
@@ -426,7 +438,9 @@ onBeforeUnmount(() => {
         >
           →</button
         ><span class="orbit-count">{{
-          face < 4 ? "0" + (face + 1) + " / 04" : "NEXT"
+          face < projects.length
+            ? "0" + (face + 1) + " / 0" + projects.length
+            : "NEXT"
         }}</span>
       </div>
     </div>
@@ -484,7 +498,7 @@ onBeforeUnmount(() => {
               :href="detail.url"
               target="_blank"
               rel="noopener noreferrer"
-              >{{ c.discovery.demo }} ↗</a
+              >{{ detail.liveLabel || c.discovery.demo }} ↗</a
             ><a
               v-if="detail.code"
               class="button secondary"

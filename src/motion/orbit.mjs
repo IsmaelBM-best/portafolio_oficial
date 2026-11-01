@@ -1,5 +1,6 @@
-export const ORBIT_DURATION = 10000;
+export const ORBIT_FACES = 6;
 export const ORBIT_STEP = 2000;
+export const ORBIT_DURATION = ORBIT_FACES * ORBIT_STEP;
 const cubic = (t, a, b) =>
   3 * (1 - t) * (1 - t) * t * a + 3 * (1 - t) * t * t * b + t * t * t;
 export function orbitEase(progress) {
@@ -19,7 +20,7 @@ export function orbitFace(time) {
   const base = Math.floor(clock / ORBIT_STEP),
     local = clock % ORBIT_STEP;
   const position = base + (local <= 1200 ? 0 : orbitEase((local - 1200) / 800));
-  return Math.round(position) % 5;
+  return Math.round(position) % ORBIT_FACES;
 }
 export function shortestTurn(from, to) {
   return from + (((((to - from) % 360) + 540) % 360) - 180);
