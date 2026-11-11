@@ -21,7 +21,7 @@
     "descripcion": "¿Tienes un proyecto en mente? Estoy disponible para nuevas oportunidades.",
     "titulo_informacion": "Información de contacto",
     "email": "Email",
-    "mail": "ismaelbm432@gmail.com",
+    "mail": "ismaelblandonwork@gmail.com",
     "telefono": "Teléfono",
     "numero": "300 798 2609",
     "ubicacion": "Ubicación",
@@ -102,11 +102,11 @@
     "eyebrow": "05 / CONSTRUYAMOS",
     "title": "Cuéntame qué necesitas construir.",
     "intro": "Un sitio, un MVP, un flujo con IA o un producto que necesita un desarrollador. Cuéntame el objetivo, lo que ya existe y tus plazos.",
-    "note": "Este formulario abre WhatsApp con tu mensaje listo para revisar. No se envía automáticamente. Si prefieres email, usa la dirección de abajo.",
-    "send": "Continuar en WhatsApp",
+    "note": "El formulario abre tu aplicación de correo con un borrador para que lo revises y lo envíes.",
+    "send": "Abrir borrador de correo",
     "message": "¿Qué necesitas construir?",
     "placeholder": "¿Qué quieres construir? Comparte el alcance, plazo y presupuesto si lo tienes.",
-    "ready": "Tu mensaje está listo en WhatsApp. Revísalo allí antes de enviarlo."
+    "ready": "Revisa el borrador en tu aplicación de correo. También puedes escribir a la dirección que aparece en esta sección."
   },
   "discovery": {
     "titleA": "Tu próxima idea.",

@@ -10,20 +10,11 @@ const name = ref(""),
   message = ref(""),
   opened = ref(false);
 function sendMessage() {
+  const subject = props.isSpanish ? "Consulta de proyecto" : "Project inquiry";
   const greeting = props.isSpanish ? "Hola, soy" : "Hi, I'm";
-  const text =
-    greeting +
-    " " +
-    name.value.trim() +
-    " (" +
-    email.value.trim() +
-    "). " +
-    message.value.trim();
-  window.open(
-    "https://wa.me/573007982609?text=" + encodeURIComponent(text),
-    "_blank",
-    "noopener,noreferrer",
-  );
+  const body = `${greeting} ${name.value.trim()} (${email.value.trim()}).\n\n${message.value.trim()}`;
+  window.location.href =
+    `mailto:${c.value.contact.mail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   opened.value = true;
 }
 </script>
@@ -37,7 +28,6 @@ function sendMessage() {
         >{{ c.contact.mail }} ↗</a
       >
       <p>{{ c.hero.location }}</p>
-      <a href="tel:+573007982609">+57 300 798 2609</a>
       <div class="social-links">
         <a
           href="https://github.com/IsmaelBM-best"

@@ -21,7 +21,7 @@
     "descripcion": "Do you have a project in mind? I'm available for new opportunities.",
     "titulo_informacion": "Contact Information",
     "email": "Email",
-    "mail": "ismaelbm432@gmail.com",
+    "mail": "ismaelblandonwork@gmail.com",
     "telefono": "Phone",
     "numero": "300 798 2609",
     "ubicacion": "Location",
@@ -102,11 +102,11 @@
     "eyebrow": "05 / LET’S BUILD",
     "title": "Tell me what you need built.",
     "intro": "A website, an MVP, an AI workflow, or a product that needs a developer. Tell me your goal, what already exists and your timeline.",
-    "note": "This form opens WhatsApp with your message ready to review. Nothing is sent automatically. Prefer email? Use the address below.",
-    "send": "Continue on WhatsApp",
+    "note": "The form opens a draft in your email app for you to review and send.",
+    "send": "Open email draft",
     "message": "What do you need built?",
     "placeholder": "What are you building? Share the scope, timeline and budget if you have one.",
-    "ready": "Your message is ready in WhatsApp. Review it there before sending."
+    "ready": "Review the draft in your email app. You can also write to the address shown in this section."
   },
   "discovery": {
     "titleA": "Your next idea.",

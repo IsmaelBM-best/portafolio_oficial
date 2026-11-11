@@ -2,7 +2,7 @@
 import { computed } from "vue";
 import es from "../locales/es.json";
 import en from "../locales/en.json";
-import portrait from "../assets/yop.png";
+import portrait from "../assets/ismael-retrato.webp";
 import HeroScene from "./HeroScene.vue";
 import resume from "../assets/documents/ismael-blandon-cv.pdf";
 const props = defineProps({ isSpanish: Boolean });
@@ -58,16 +58,16 @@ const c = computed(() => (props.isSpanish ? es : en));
           <img
             :src="portrait"
             alt=""
-            width="396"
-            height="629"
+            width="942"
+            height="1203"
             class="portrait-body"
           />
         </div>
         <img
           :src="portrait"
           alt="Ismael Blandon Moreno"
-          width="396"
-          height="629"
+          width="942"
+          height="1203"
           fetchpriority="high"
           class="portrait-popout"
         />
