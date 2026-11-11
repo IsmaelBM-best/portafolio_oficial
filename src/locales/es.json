@@ -1,5 +1,20 @@
 {
   "projects": {
+    "ergasia": {
+      "title": "Ergasia — Jornadas y tareas",
+      "description": "Centraliza jornadas, turnos y tareas en una sola plataforma. Permite consultar el estado del equipo en vivo, detectar bloqueos y exportar informes de actividad.",
+      "visit": "Ver Ergasia"
+    },
+    "veltrix": {
+      "title": "Veltrix — Gestión para constructoras",
+      "description": "Organiza oportunidades, cotizaciones y seguimientos para que cada solicitud de obra tenga un responsable y un próximo paso.",
+      "visit": "Solicitar una demo"
+    },
+    "nexora": {
+      "title": "Nexora — Inventario y pedidos",
+      "description": "Conecta catálogo, existencias y pedidos para saber qué está disponible y qué falta preparar o entregar.",
+      "visit": "Solicitar una demo"
+    },
     "pleonTitle": "PLEON — Tienda online Shopify",
     "pleonDescription": "Tienda online activa con catálogo de productos, búsqueda, favoritos, opciones de compra, bolsa y acceso al checkout de Shopify. Incluye una identidad visual propia y ayuda al comprador con Buñuelo.",
     "pleonVisit": "Visitar tienda",
@@ -150,7 +165,7 @@
     "storyCv": "Ver toda la experiencia en mi CV",
     "projectsEyebrow": "02 / EL TRABAJO, DE CERCA",
     "projectsTitle": "Explora el producto. Descubre el razonamiento.",
-    "projectsIntro": "Cinco proyectos, incluida una tienda Shopify activa. Interacciones claras, funciones útiles y atención a los detalles.",
+    "projectsIntro": "Explora Ergasia, Veltrix, Nexora y otros proyectos para equipos, comercio y operaciones diarias.",
     "projectDetails": "Detrás del desarrollo",
     "previous": "Proyecto anterior",
     "next": "Proyecto siguiente",
@@ -204,6 +219,48 @@
       "Las herramientas para interfaces, coordinación y comunicación."
     ],
     "projectCases": [
+      {
+        "idea": "Coordinar equipos cuando las jornadas, tareas e incidencias se reparten entre chats y hojas de cálculo.",
+        "focus": "Reúne la supervisión, la planificación de turnos y el registro de actividad sin duplicar trabajo.",
+        "features": [
+          "Supervisión del estado del equipo en vivo",
+          "Asignación de tareas y planificación de turnos",
+          "Registro de jornadas e informes exportables en CSV"
+        ],
+        "stack": [
+          "Operaciones",
+          "Equipos remotos",
+          "Informes"
+        ]
+      },
+      {
+        "idea": "Evitar que oportunidades y cotizaciones queden dispersas entre conversaciones, documentos y hojas de cálculo.",
+        "focus": "Conecta la captación y el seguimiento comercial en un espacio de trabajo para constructoras.",
+        "features": [
+          "Registro y seguimiento de oportunidades",
+          "Cotizaciones, servicios y proyectos",
+          "Etapas desde el primer contacto hasta la adjudicación"
+        ],
+        "stack": [
+          "Construcción",
+          "Gestión comercial",
+          "Cotizaciones"
+        ]
+      },
+      {
+        "idea": "Gestionar ventas sin perder el control del inventario ni del estado de cada pedido.",
+        "focus": "Centraliza catálogo, existencias y flujo de preparación y despacho.",
+        "features": [
+          "Catálogo y categorías de producto",
+          "Inventario y alertas de atención",
+          "Seguimiento de pedidos y entregas"
+        ],
+        "stack": [
+          "Comercio",
+          "Inventario",
+          "Pedidos"
+        ]
+      },
       {
         "idea": "Crear una experiencia de compra real para productos cotidianos, desde descubrir un artículo hasta revisar la bolsa y continuar al checkout.",
         "focus": "Presentación de la marca, navegación del catálogo, opciones de producto y caminos claros hacia la compra o la atención por WhatsApp.",

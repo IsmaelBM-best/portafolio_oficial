@@ -1,5 +1,20 @@
 {
   "projects": {
+    "ergasia": {
+      "title": "Ergasia — Shifts and tasks",
+      "description": "Manage work sessions, shifts and tasks in one platform. See team status in real time, spot blockers and export activity reports.",
+      "visit": "View Ergasia"
+    },
+    "veltrix": {
+      "title": "Veltrix — Construction management",
+      "description": "Organize opportunities, quotes and follow-ups so every construction inquiry has an owner and a next step.",
+      "visit": "Request a demo"
+    },
+    "nexora": {
+      "title": "Nexora — Inventory and orders",
+      "description": "Connect your catalog, stock and orders to see what is available, what needs packing and what is ready to deliver.",
+      "visit": "Request a demo"
+    },
     "pleonTitle": "PLEON — Shopify Online Store",
     "pleonDescription": "A live online store with a product catalog, search, saved finds, product options, a shopping bag and a path to Shopify checkout. It has its own visual identity and Buñuelo to help shoppers.",
     "pleonVisit": "Visit live store",
@@ -150,7 +165,7 @@
     "storyCv": "See the full experience in my CV",
     "projectsEyebrow": "02 / THE WORK, UP CLOSE",
     "projectsTitle": "Explore the product. Discover the thinking.",
-    "projectsIntro": "Five projects, including a live Shopify store. Clear interactions, useful features and attention to the details.",
+    "projectsIntro": "Explore Ergasia, Veltrix, Nexora and other projects for teams, commerce and everyday operations.",
     "projectDetails": "Behind the build",
     "previous": "Previous project",
     "next": "Next project",
@@ -204,6 +219,48 @@
       "The tools behind UI work, coordination and communication."
     ],
     "projectCases": [
+      {
+        "idea": "Coordinate teams when shifts, tasks and issues are spread across chat threads and spreadsheets.",
+        "focus": "Bring live supervision, shift planning and activity tracking together without duplicate work.",
+        "features": [
+          "Live team status",
+          "Task assignment and shift planning",
+          "Work session tracking and CSV exports"
+        ],
+        "stack": [
+          "Operations",
+          "Remote teams",
+          "Reporting"
+        ]
+      },
+      {
+        "idea": "Keep opportunities and quotes from getting lost across conversations, documents and spreadsheets.",
+        "focus": "Connect lead capture and sales follow-up in a workspace for construction firms.",
+        "features": [
+          "Opportunity tracking",
+          "Quotes, services and projects",
+          "Stages from initial contact through award"
+        ],
+        "stack": [
+          "Construction",
+          "Sales operations",
+          "Quotes"
+        ]
+      },
+      {
+        "idea": "Manage sales without losing track of inventory or order status.",
+        "focus": "Centralize products, stock and the fulfillment workflow.",
+        "features": [
+          "Product catalog and categories",
+          "Inventory and stock alerts",
+          "Order and delivery tracking"
+        ],
+        "stack": [
+          "Commerce",
+          "Inventory",
+          "Orders"
+        ]
+      },
       {
         "idea": "Build a real shopping experience for everyday products, from discovering an item to reviewing the bag and continuing to checkout.",
         "focus": "Brand presentation, catalog navigation, product options and clear paths to purchase or WhatsApp support.",

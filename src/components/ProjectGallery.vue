@@ -9,7 +9,13 @@ import {
 } from "vue";
 import TechObject from "./TechObject.vue";
 import resume from "../assets/documents/ismael-blandon-cv.pdf";
-import { orbitFace, shortestTurn, ORBIT_STEP } from "../motion/orbit.mjs";
+import {
+  orbitFace,
+  orbitFrames,
+  orbitTransform,
+  shortestTurn,
+  ORBIT_STEP,
+} from "../motion/orbit.mjs";
 import es from "../locales/es.json";
 import en from "../locales/en.json";
 import health from "../assets/careflow-preview-960.jpg";
@@ -21,6 +27,10 @@ import pawlyLarge from "../assets/pawly-preview-1600.jpg";
 import commerce from "../assets/commerce-preview-960.jpg";
 import commerceLarge from "../assets/commerce-preview-1600.jpg";
 import pleon from "../assets/pleon-store-preview.png";
+import ergasia from "../assets/ergasia-acceso.webp";
+import ergasiaDashboard from "../assets/ergasia-supervision.webp";
+import veltrix from "../assets/veltrix-preview.webp";
+import nexora from "../assets/nexora-preview.webp";
 
 const props = defineProps({ isSpanish: Boolean });
 const c = computed(() => (props.isSpanish ? es : en));
@@ -45,6 +55,28 @@ let observer,
   moveId = 0,
   alive = true;
 const projects = computed(() => [
+  {
+    title: c.value.projects.ergasia.title,
+    description: c.value.projects.ergasia.description,
+    image: ergasia,
+    large: ergasiaDashboard,
+    url: "https://ergasia.pages.dev/",
+    liveLabel: c.value.projects.ergasia.visit,
+  },
+  {
+    title: c.value.projects.veltrix.title,
+    description: c.value.projects.veltrix.description,
+    image: veltrix,
+    large: veltrix,
+    liveLabel: c.value.projects.veltrix.visit,
+  },
+  {
+    title: c.value.projects.nexora.title,
+    description: c.value.projects.nexora.description,
+    image: nexora,
+    large: nexora,
+    liveLabel: c.value.projects.nexora.visit,
+  },
   {
     title: c.value.projects.pleonTitle,
     description: c.value.projects.pleonDescription,
@@ -91,6 +123,9 @@ const projects = computed(() => [
   },
 ]);
 
+const faceCount = projects.value.length + 1;
+const angleStep = 360 / faceCount;
+const depthScale = 1 / (2 * Math.tan(Math.PI / faceCount));
 const current = computed(() =>
   projects.value[Math.min(face.value, projects.value.length - 1)],
 );
@@ -118,29 +153,25 @@ const instruction = computed(() =>
     ? "Pasa el puntero para detener. Explora con las flechas."
     : "Hover to pause. Explore with the arrows.",
 );
-function orbitAnimation() {
-  if (!animation || animation.playState === "idle")
-    animation = ring.value
-      ?.getAnimations()
-      .find((item) => item.animationName === "project-orbit");
-  return animation;
-}
 function sample() {
   timer = 0;
   if (!running.value) return;
-  face.value = orbitFace(orbitAnimation()?.currentTime);
+  face.value = orbitFace(animation?.currentTime, faceCount);
   timer = setTimeout(sample, 100);
 }
 async function playback() {
   await nextTick();
   if (!alive) return;
-  const currentAnimation = orbitAnimation();
   clearTimeout(timer);
   timer = 0;
+  if (!animation) return;
   if (running.value) {
-    currentAnimation?.play();
+    animation.play();
     sample();
-  } else currentAnimation?.pause();
+  } else {
+    animation.pause();
+    if (reduced.value) animation.currentTime = face.value * ORBIT_STEP;
+  }
 }
 function select(index) {
   const from = ring.value ? getComputedStyle(ring.value).transform : "none";
@@ -148,26 +179,24 @@ function select(index) {
   const angle = matrix
     ? (Math.atan2(matrix.m31, matrix.m11) * 180) / Math.PI
     : 0;
-  const target = (index + 6) % 6;
+  const target = (index + faceCount) % faceCount;
   const token = ++moveId;
   manualTween?.cancel();
   manualBusy.value = true;
   face.value = target;
-  const currentAnimation = orbitAnimation();
-  if (currentAnimation) {
-    currentAnimation.pause();
-    currentAnimation.currentTime = target * ORBIT_STEP;
+  if (animation) {
+    animation.pause();
+    animation.currentTime = target * ORBIT_STEP;
   }
   if (reduced.value || !ring.value) {
     manualBusy.value = false;
     return;
   }
-  const radius = ring.value.offsetWidth * (Math.sqrt(3) / 2),
-    turn = shortestTurn(angle, -target * 60);
+  const turn = shortestTurn(angle, -target * angleStep);
   manualTween = ring.value.animate(
     [
       { transform: from },
-      { transform: "translateZ(-" + radius + "px) rotateY(" + turn + "deg)" },
+      { transform: orbitTransform(turn) },
     ],
     {
       duration: Math.max(360, Math.min(720, Math.abs(turn - angle) * 7)),
@@ -239,7 +268,6 @@ onMounted(async () => {
     "change",
     () => {
       reduced.value = preference.matches;
-      animation = null;
       playback();
     },
     { signal },
@@ -258,6 +286,12 @@ onMounted(async () => {
     { threshold: 0.12 },
   );
   observer.observe(stage.value);
+  animation = ring.value.animate(orbitFrames(faceCount), {
+    duration: faceCount * ORBIT_STEP,
+    iterations: Infinity,
+  });
+  animation.pause();
+  animation.currentTime = 0;
   await Promise.allSettled(
     [...ring.value.querySelectorAll("img")].map((image) => image.decode()),
   );
@@ -271,6 +305,7 @@ onBeforeUnmount(() => {
   clearTimeout(timer);
   moveId++;
   manualTween?.cancel();
+  animation?.cancel();
 });
 </script>
 <template>
@@ -294,6 +329,7 @@ onBeforeUnmount(() => {
         <div
           ref="stage"
           class="project-orbit-stage"
+          :style="{ '--ring-depth-scale': depthScale }"
           tabindex="0"
           :aria-label="
             isSpanish
@@ -313,18 +349,17 @@ onBeforeUnmount(() => {
             <div
               ref="ring"
               class="project-orbit-ring"
-              :class="{ 'is-paused': !running }"
-              :style="{ '--manual-angle': -face * 60 + 'deg' }"
+              :style="{ '--manual-angle': -face * angleStep + 'deg' }"
               :data-rotation="running ? 'running' : 'paused'"
               aria-hidden="true"
             >
               <div
                 v-for="(project, i) in projects"
-                :key="project.url"
+                :key="project.title"
                 class="project-orbit-face"
                 :style="{
                   transform:
-                    'rotateY(' + i * 60 + 'deg) translateZ(var(--ring-radius))',
+                    'rotateY(' + i * angleStep + 'deg) translateZ(var(--ring-radius))',
                 }"
               >
                 <img
@@ -342,9 +377,9 @@ onBeforeUnmount(() => {
               </div>
               <div
                 class="project-orbit-face orbit-idea"
-                style="
-                  transform: rotateY(300deg) translateZ(var(--ring-radius));
-                "
+                :style="{
+                  transform: 'rotateY(' + projects.length * angleStep + 'deg) translateZ(var(--ring-radius))',
+                }"
               >
                 <TechObject kind="chip" /><strong>{{
                   isSpanish ? "Tu próxima idea." : "Your next idea."
@@ -367,11 +402,13 @@ onBeforeUnmount(() => {
                   <button class="button primary" @click="openDetails">
                     {{ c.discovery.projectDetails }} ↗</button
                   ><a
+                    v-if="current.url"
                     :href="current.url"
                     target="_blank"
                     rel="noopener noreferrer"
                     :aria-label="(current.liveLabel || c.discovery.demo) + ': ' + current.title"
                     >{{ current.liveLabel || c.discovery.demo }} ↗</a
+                  ><a v-else href="#contact">{{ current.liveLabel }} ↗</a
                   ><a
                     v-if="current.code"
                     :href="current.code"
@@ -415,7 +452,7 @@ onBeforeUnmount(() => {
         <div class="gallery-dots">
           <button
             v-for="(project, i) in projects"
-            :key="project.url"
+            :key="project.title"
             :aria-label="c.discovery.select + ': ' + project.title"
             :aria-pressed="i === face"
             @click="select(i)"
@@ -495,10 +532,13 @@ onBeforeUnmount(() => {
           <div class="actions">
             <a
               class="button primary"
+              v-if="detail.url"
               :href="detail.url"
               target="_blank"
               rel="noopener noreferrer"
               >{{ detail.liveLabel || c.discovery.demo }} ↗</a
+            ><a v-else class="button primary" href="#contact" @click="closeDetails"
+              >{{ detail.liveLabel }} ↗</a
             ><a
               v-if="detail.code"
               class="button secondary"

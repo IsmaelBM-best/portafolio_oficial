@@ -1,4 +1,4 @@
-export const ORBIT_FACES = 6;
+export const ORBIT_FACES = 9;
 export const ORBIT_STEP = 2000;
 export const ORBIT_DURATION = ORBIT_FACES * ORBIT_STEP;
 const cubic = (t, a, b) =>
@@ -14,13 +14,32 @@ export function orbitEase(progress) {
   }
   return cubic((lo + hi) / 2, 0.61, 1);
 }
-export function orbitFace(time) {
-  const clock =
-    (((Number(time) || 0) % ORBIT_DURATION) + ORBIT_DURATION) % ORBIT_DURATION;
+const HOLD = 1200;
+export function orbitTransform(angle) {
+  return "translateZ(calc(-1 * var(--ring-radius))) rotateY(" + angle + "deg)";
+}
+export function orbitFrames(faceCount) {
+  const angleStep = 360 / faceCount;
+  const frames = Array.from({ length: faceCount }, (_, index) => {
+    const transform = orbitTransform(-index * angleStep);
+    return [
+      { offset: index / faceCount, transform },
+      {
+        offset: (index + HOLD / ORBIT_STEP) / faceCount,
+        transform,
+        easing: "cubic-bezier(.22,.61,.36,1)",
+      },
+    ];
+  }).flat();
+  return [...frames, { offset: 1, transform: orbitTransform(-360) }];
+}
+export function orbitFace(time, faceCount = ORBIT_FACES) {
+  const duration = faceCount * ORBIT_STEP;
+  const clock = (((Number(time) || 0) % duration) + duration) % duration;
   const base = Math.floor(clock / ORBIT_STEP),
     local = clock % ORBIT_STEP;
-  const position = base + (local <= 1200 ? 0 : orbitEase((local - 1200) / 800));
-  return Math.round(position) % ORBIT_FACES;
+  const position = base + (local <= HOLD ? 0 : orbitEase((local - HOLD) / (ORBIT_STEP - HOLD)));
+  return Math.round(position) % faceCount;
 }
 export function shortestTurn(from, to) {
   return from + (((((to - from) % 360) + 540) % 360) - 180);

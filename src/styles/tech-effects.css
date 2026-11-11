@@ -318,7 +318,8 @@
   height: 300px;
   touch-action: pan-y;
   --ring-width: 320px;
-  --ring-radius: calc(var(--ring-width) * 0.8660254);
+  --ring-radius: calc(var(--ring-width) * var(--ring-depth-scale));
+  overflow: clip;
 }
 .project-orbit-mount {
   position: absolute;
@@ -333,17 +334,13 @@
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
-  transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(0deg);
-  animation: project-orbit 12s infinite cubic-bezier(1, 0.015, 0.295, 1.225)
-    forwards;
+  transform: translateZ(calc(-1 * var(--ring-radius)))
+    rotateY(var(--manual-angle, 0deg));
   will-change: transform;
-}
-.project-orbit-ring.is-paused {
-  animation-play-state: paused;
 }
 .project-orbit-face {
   position: absolute;
-  inset: 0;
+  inset: 0 9px;
   border-radius: 12px;
   background: #14201b;
   border: 1px solid #8fb766;
@@ -356,7 +353,7 @@
   display: block;
   width: 100%;
   height: calc(100% - 61px);
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   background: #101a13;
 }
@@ -714,7 +711,6 @@
   .project-orbit-stage {
     --ring-width: 200px;
     height: 212px;
-    overflow: visible;
   }
   .project-orbit-mount {
     height: 154px;
@@ -865,49 +861,12 @@
   .workbench-plate {
     transform: none;
   }
-  .project-orbit-ring {
-    animation: none !important;
-    transform: translateZ(calc(-1 * var(--ring-radius)))
-      rotateY(var(--manual-angle, 0deg));
-  }
   .magic-card::before,
   .magic-card::after {
     animation: none !important;
   }
   .portrait-popout {
     filter: none;
-  }
-}
-.project-orbit-ring {
-  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-@keyframes project-orbit {
-  0%,
-  10% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(0deg);
-  }
-  16.667%,
-  26.667% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-60deg);
-  }
-  33.333%,
-  43.333% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-120deg);
-  }
-  50%,
-  60% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-180deg);
-  }
-  66.667%,
-  76.667% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-240deg);
-  }
-  83.333%,
-  93.333% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-300deg);
-  }
-  100% {
-    transform: translateZ(calc(-1 * var(--ring-radius))) rotateY(-360deg);
   }
 }
 .orbit-instruction {
@@ -967,16 +926,13 @@
     gap: 12px;
   }
   .gallery-dots button {
-    width: 28px;
+    width: clamp(15px, 4.8vw, 26px);
   }
   .orbit-count {
     min-width: 30px;
   }
 }
 @media (max-width: 370px) {
-  .gallery-dots button {
-    width: 25px;
-  }
   .orbit-interaction .gallery-controls {
     gap: 7px;
   }
