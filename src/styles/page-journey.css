@@ -13,3 +13,10 @@ body{background:#62656b}#app{isolation:isolate}.page-atmosphere{position:fixed;i
 @media(prefers-reduced-motion:reduce){.macbook-webgl,.macbook-fallback{display:none}.projects-section>.container>.section-heading{min-height:0}.projects-section>.container>.section-heading>p{margin-top:0}#software .software-panel{padding-top:60px;min-height:0}#software .software-copy{transform:none}}
 .dock-projects-end{width:100%;height:560px;margin:40px auto 0}.journey-screen-caption{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:12px;letter-spacing:.03em;color:#e7e1fa}.dock-projects-end::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse,#a673ed20,transparent 65%);border-bottom:1px solid #d4b8ff22;border-radius:50%;transform:rotateX(68deg)}
 @media(max-width:760px){.dock-projects-end{height:360px;margin-top:25px}.journey-screen-caption{font-size:10px;bottom:0}}
+
+/* Reserved reading stage: the laptop holds front-on while the document keeps scrolling. */
+.dock-projects-end{height:190vh;height:190svh;min-height:1050px;width:100%;margin-top:70px}
+.dock-projects-end::before{inset:30% 0;border:0}
+.dock-projects-end .journey-screen-caption{bottom:24px}
+@media(max-width:760px){.dock-projects-end{height:180svh;min-height:1000px;width:100%;margin-top:45px}}
+@media(prefers-reduced-motion:reduce){.dock-projects-end{display:none}}
