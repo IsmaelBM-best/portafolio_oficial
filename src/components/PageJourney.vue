@@ -10,7 +10,7 @@ onMounted(()=>{
  function measure(){
   width=innerWidth;height=innerHeight;
   points=[...document.querySelectorAll('[data-journey]')].map(el=>{const r=el.getBoundingClientRect();return {name:el.dataset.journey,top:r.top+scrollY,bottom:r.bottom+scrollY,x:r.left+r.width/2,width:r.width,height:r.height,angle:Number(el.dataset.angle),hue:Number(el.dataset.hue)};});
-  obstacles=[...document.querySelectorAll('.nav, .hero-copy, .hero-proof, .expertise-strip, main .section-heading, main .service-card, main .process-grid, main .software-copy, main .software-features, main .about-panel, main .contact-panel>p, main .contact-panel>h2, main .contact-panel>small, main .actions, main form, #projects, footer')].map(el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top+(el.matches(".nav")?0:scrollY),bottom:r.bottom+(el.matches(".nav")?0:scrollY),fixed:el.matches('.nav'),exclusive:el.matches('#projects')};});
+  obstacles=[...document.querySelectorAll('.nav, .hero-copy, .hero-proof, .expertise-strip, main .section-heading, main .service-card, main .process-grid, main .software-copy, main .software-features, main .about-panel, main .contact-panel>p, main .contact-panel>h2, main .contact-panel>small, main .actions, main form, #projects, #testimonials, footer')].map(el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top+(el.matches(".nav")?0:scrollY),bottom:r.bottom+(el.matches(".nav")?0:scrollY),fixed:el.matches('.nav'),exclusive:el.matches('#projects, #testimonials')};});
  }
  function update(){frame=0;reduced.value=media.matches;if(!points.length)return;
   const scroll=scrollY,center=scroll+height*.52;
