@@ -10,7 +10,7 @@ onMounted(()=>{
  function measure(){
   width=innerWidth;height=innerHeight;
   points=[...document.querySelectorAll('[data-journey]')].map(el=>{const r=el.getBoundingClientRect();return {name:el.dataset.journey,top:r.top+scrollY,bottom:r.bottom+scrollY,x:r.left+r.width/2,width:r.width,height:r.height,angle:Number(el.dataset.angle),hue:Number(el.dataset.hue)};});
-  obstacles=[...document.querySelectorAll('.nav, .hero-copy, .hero-proof, .expertise-strip, main .section-heading, main .service-card, main .process-grid, main .software-copy, main .software-features, main .about-panel, main .contact-panel>p, main .contact-panel>h2, main .contact-panel>small, main .actions, #projects, footer')].map(el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top+(el.matches(".nav")?0:scrollY),bottom:r.bottom+(el.matches(".nav")?0:scrollY),fixed:el.matches('.nav'),exclusive:el.matches('#projects')};});
+  obstacles=[...document.querySelectorAll('.nav, .hero-copy, .hero-proof, .expertise-strip, main .section-heading, main .service-card, main .process-grid, main .software-copy, main .software-features, main .about-panel, main .contact-panel>p, main .contact-panel>h2, main .contact-panel>small, main .actions, main form, #projects, footer')].map(el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top+(el.matches(".nav")?0:scrollY),bottom:r.bottom+(el.matches(".nav")?0:scrollY),fixed:el.matches('.nav'),exclusive:el.matches('#projects')};});
  }
  function update(){frame=0;reduced.value=media.matches;if(!points.length)return;
   const scroll=scrollY,center=scroll+height*.52;
@@ -18,10 +18,11 @@ onMounted(()=>{
   const reading=dock.name==='projects-end',local=clamp((center-dock.top)/dock.height),sway=Math.sin((local-.5)*Math.PI);
   // Each visible segment stays inside its own reserved space; transitions across content are hidden.
   let x=dock.x,y=(dock.top+dock.bottom)/2-scroll,scale=Math.min(dock.width/870,dock.height/600),angle=dock.angle+sway*12,tilt=8,roll=sway*2,hinge=-.14;
-  if(reading){x=width/2;y=clamp(height*.53,dock.top-scroll+height*.53,dock.bottom-scroll-height*.47);scale=Math.min((width-40)/740,(height-240)/450,1.65);angle=0;roll=0;hinge=-8*Math.PI/180;}
-  const visible=dock.bottom-scroll>120&&dock.top-scroll<height-50;
+  if(reading){x=dock.x;y=clamp(y,height*.4,height*.65);scale=Math.min(dock.width/850,dock.height/580);angle=-4;roll=0;hinge=-8*Math.PI/180;}
+  if(!reading)y=clamp(y,height*.43,height*.64);
+  const visible=true;
   const forbidden=obstacles.map(r=>({...r,top:r.fixed?r.top:r.top-scroll,bottom:r.fixed?r.bottom:r.bottom-scroll}));
-  const projectsVisible=forbidden.some(r=>r.exclusive&&r.bottom>0&&r.top<height);
+  const projectsVisible=forbidden.some(r=>r.exclusive&&r.bottom>height*.35&&r.top<height*.3);
   state.value={x,y,scale,angle,tilt,roll,hinge,behind:false,hue:dock.hue,pageProgress:clamp(scroll/(document.documentElement.scrollHeight-height)),progress:reading ? .05 :clamp(scroll/(document.documentElement.scrollHeight-height)),opacity:visible&&!projectsVisible?1:0,forbidden,projectsVisible};
  }
  const schedule=()=>{if(!frame)frame=requestAnimationFrame(update)};const resize=()=>{measure();schedule()};
