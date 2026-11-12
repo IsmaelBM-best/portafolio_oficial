@@ -7,23 +7,32 @@ const turn=ref(0),paused=ref(false),hovered=ref(false),focused=ref(false),visibl
 const active=computed(()=>((turn.value%props.projects.length)+props.projects.length)%props.projects.length);
 const current=computed(()=>props.projects[active.value]);
 const t=(a,b)=>props.es?a:b;
-let timer,observer,controller,startX=null;
+let timer,observer,controller,startX=null,entryTimer,scrollFrame=0;
 function select(i){const n=props.projects.length;let d=(i-active.value+n)%n;if(d>n/2)d-=n;turn.value+=d;}
 function move(d){turn.value+=d;}
 function key(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();move(e.key==='ArrowRight'?1:-1)}}
 function touchStart(e){if(e.pointerType==='touch')startX=e.clientX}
 function touchEnd(e){if(startX!==null){const dx=e.clientX-startX;if(Math.abs(dx)>45)move(dx<0?1:-1);startX=null}}
 function open(){detail.value=current.value;dialog.value.showModal()}
-onMounted(()=>{controller=new AbortController();const m=matchMedia('(prefers-reduced-motion: reduce)');reduced.value=m.matches;m.addEventListener('change',()=>reduced.value=m.matches,{signal:controller.signal});observer=new IntersectionObserver(([e])=>visible.value=e.isIntersecting,{threshold:.2});observer.observe(stage.value);timer=setInterval(()=>{if(visible.value&&!paused.value&&!hovered.value&&!focused.value&&!reduced.value&&!document.hidden&&!dialog.value.open)move(1)},5200)});
-onBeforeUnmount(()=>{clearInterval(timer);observer?.disconnect();controller?.abort()});
+onMounted(()=>{
+ controller=new AbortController();const m=matchMedia('(prefers-reduced-motion: reduce)');reduced.value=m.matches;
+ m.addEventListener('change',()=>reduced.value=m.matches,{signal:controller.signal});
+ const canMove=()=>visible.value&&!paused.value&&!hovered.value&&!focused.value&&!reduced.value&&!document.hidden&&!dialog.value.open;
+ const advance=()=>{if(canMove())move(1)};
+ let entered=false;
+ observer=new IntersectionObserver(([e])=>{visible.value=e.isIntersecting;if(e.isIntersecting&&!entered){entered=true;entryTimer=setTimeout(advance,650);timer=setInterval(advance,3400)}},{threshold:.12});observer.observe(stage.value);
+ const scroll=()=>{if(scrollFrame||!visible.value||reduced.value)return;scrollFrame=requestAnimationFrame(()=>{scrollFrame=0;const r=stage.value.getBoundingClientRect();const p=Math.max(-1,Math.min(1,(innerHeight/2-r.top-r.height/2)/innerHeight));stage.value.style.setProperty('--scroll-lift',`${p*-20}px`);stage.value.style.setProperty('--scroll-yaw',`${p*9}deg`);});};
+ window.addEventListener('scroll',scroll,{passive:true,signal:controller.signal});
+});
+onBeforeUnmount(()=>{clearInterval(timer);clearTimeout(entryTimer);cancelAnimationFrame(scrollFrame);observer?.disconnect();controller?.abort()});
 </script>
 <template>
-<div class="spatial-showcase" :style="{'--active-hue':current.hue||245}" @pointerenter="hovered=true" @pointerleave="hovered=false" @focusin="focused=true" @focusout="e=>{if(!e.currentTarget.contains(e.relatedTarget))focused=false}">
+<div class="spatial-showcase" :style="{'--active-hue':current.hue||245}" @focusin="focused=true" @focusout="e=>{if(!e.currentTarget.contains(e.relatedTarget))focused=false}">
  <div class="showcase-status"><span><i></i>{{t('EXPLORA LO QUE CONSTRUIMOS','EXPLORE WHAT WE BUILD')}}</span><button @click="paused=!paused" :aria-pressed="paused" :aria-label="paused?t('Reanudar carrusel','Resume carousel'):t('Pausar carrusel','Pause carousel')"><MaterialIcon :name="paused?'play_arrow':'pause'"/> {{paused?t('Reanudar','Resume'):t('Pausar','Pause')}}</button></div>
  <div ref="stage" class="spatial-stage" tabindex="0" role="region" aria-roledescription="carousel" :aria-label="t('Proyectos en 3D. Usa las flechas o desliza.','3D projects. Use arrow keys or swipe.')" @keydown="key" @pointerdown="touchStart" @pointerup="touchEnd" @pointercancel="startX=null">
   <div class="gallery-atmosphere" aria-hidden="true"><span></span><span></span><span></span></div><div class="spatial-halo" aria-hidden="true"></div><div class="spatial-floor" aria-hidden="true"></div>
   <div class="spatial-mount"><div class="spatial-ring" :style="{'--rotation':(-turn*360/projects.length)+'deg','--depth':1/(2*Math.tan(Math.PI/projects.length))}">
-   <button v-for="(p,i) in projects" :key="p.name" class="spatial-face" :class="{selected:i===active}" :style="{'--angle':i*360/projects.length+'deg'}" :tabindex="i===active?0:-1" :aria-hidden="i!==active" :aria-label="t('Ver detalles de ','View details of ')+p.name" @click="open">
+   <button v-for="(p,i) in projects" :key="p.name" class="spatial-face" :class="{selected:i===active}" :style="{'--angle':i*360/projects.length+'deg'}" :tabindex="i===active?0:-1" :aria-hidden="i!==active" :aria-label="t('Ver detalles de ','View details of ')+p.name" @pointerenter="hovered=true" @pointerleave="hovered=false" @click="open">
     <ProductScene :project="p" :es="es" />
    </button>
   </div></div>

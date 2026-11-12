@@ -1,0 +1,10 @@
+{
+  "name": "ismael-bm",
+  "pages_build_output_dir": "dist",
+  "compatibility_date": "2026-11-12",
+  "d1_databases": [{
+    "binding": "SOLICITUDES",
+    "database_name": "portafolio-solicitudes",
+    "database_id": "fbcc74c3-ab65-4ea3-a7b9-17bc8e68a066"
+  }]
+}

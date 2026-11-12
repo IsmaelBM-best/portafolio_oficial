@@ -9,7 +9,7 @@ async function send(event){
  busy.value=true;status.value='';failed.value=false;
  const data=Object.fromEntries(new FormData(form));
  try{
-  const response=await fetch('https://formsubmit.co/ajax/ismaelblandonwork@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({...data,_subject:'Solicitud de proyecto · Portafolio Ismael',_url:location.href,_template:'table'}),signal:AbortSignal.timeout(20000)});
+  const response=await fetch('/api/solicitudes',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data),signal:AbortSignal.timeout(20000)});
   const result=await response.json();if(!response.ok||!(result.success===true||result.success==='true'))throw Error('send');
   status.value=t('Solicitud registrada. Te contactaremos por WhatsApp.','Request submitted. We will contact you on WhatsApp.');form.reset();
  }catch{failed.value=true;status.value=t('No pudimos registrar la solicitud. Tus datos siguen aquí; vuelve a intentarlo o escríbenos por WhatsApp.','We could not submit your request. Your details are still here; try again or contact us on WhatsApp.');}
@@ -20,10 +20,10 @@ async function send(event){
  <form class="inquiry-form glass" @submit.prevent="send" :aria-busy="busy">
   <h3>{{t('Cuéntanos qué necesitas','Tell us what you need')}}</h3>
   <label>{{t('Tu nombre','Your name')}}<input name="nombre" autocomplete="name" required maxlength="100"></label>
-  <label>WhatsApp<input name="whatsapp" type="tel" autocomplete="tel" placeholder="+57 300 123 4567" pattern="[+0-9 ()\-]{7,25}" required maxlength="25"></label>
+  <label>WhatsApp<input name="whatsapp" type="tel" autocomplete="tel" placeholder="+57 300 123 4567" pattern="[+0-9 \(\)\-]{7,25}" required maxlength="25"></label>
   <label>{{t('¿Qué necesitas?','What do you need?')}}<textarea name="necesidad" rows="3" required minlength="10" maxlength="2000" :placeholder="t('Cuéntanos brevemente tu idea o el problema que quieres resolver.','Briefly describe your idea or the problem you want to solve.')"></textarea></label>
-  <input class="form-honey" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-  <small>{{t('Usaremos estos datos para responder a tu solicitud. El formulario se procesa mediante FormSubmit.','We will use these details to respond to your request. FormSubmit processes this form.')}}</small>
+  <input class="form-honey" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <small>{{t('Tus datos se guardan de forma privada y se usan únicamente para responder a tu solicitud.','Your details are stored privately and used only to respond to your request.')}}</small>
   <button class="button primary" type="submit" :disabled="busy">{{busy?t('Enviando…','Sending…'):t('Enviar solicitud','Send request')}}</button>
   <p role="status" :class="{'form-error':failed}">{{status}}</p>
  </form>
