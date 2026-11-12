@@ -20,3 +20,17 @@ body{background:#62656b}#app{isolation:isolate}.page-atmosphere{position:fixed;i
 .dock-projects-end .journey-screen-caption{bottom:24px}
 @media(max-width:760px){.dock-projects-end{height:180svh;min-height:1000px;width:100%;margin-top:45px}}
 @media(prefers-reduced-motion:reduce){.dock-projects-end{display:none}}
+
+/* Project marks belong to the section background, never to the moving laptop. */
+main>section{position:relative;isolation:isolate}
+.section-brand-atmosphere{position:absolute;inset:0 calc((min(100vw,1240px) - 100vw)/2);overflow:clip;pointer-events:none;z-index:-1;mask-image:linear-gradient(transparent,#000 18%,#000 82%,transparent)}
+.projects-section>.section-brand-atmosphere{inset:0}
+.ambient-brand{position:absolute;width:clamp(350px,44vw,750px);height:clamp(350px,44vw,750px);opacity:.095;filter:saturate(.85);mask-image:radial-gradient(ellipse,#000 30%,transparent 73%)}
+.ambient-brand.left{left:-18%;top:5%;transform:rotate(-16deg)}
+.ambient-brand.right{right:-18%;bottom:2%;transform:rotate(16deg)}
+.ambient-brand img,.ambient-brand span{width:100%;height:100%;object-fit:contain;display:block}
+.ambient-brand span{background-size:300% 100%;background-repeat:no-repeat}
+.projects-section>.container>.section-heading{min-height:0;align-items:flex-end}
+.projects-section>.container>.section-heading>p{margin-top:0}
+.ergasia-reading{position:relative}.ergasia-reading .dock-projects-end{margin-top:0}
+@media(max-width:760px){.ambient-brand{width:370px;height:370px;opacity:.065}.ambient-brand.left{left:-65%}.ambient-brand.right{right:-65%}.projects-section>.container>.section-heading>p{margin-top:23px}}

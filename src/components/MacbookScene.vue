@@ -1,11 +1,13 @@
 <script setup>
-import {ref,onMounted,onBeforeUnmount,watch} from 'vue';
+import {clearanceOpacity} from '../three/layout-safety.js';
+import {computed,ref,onMounted,onBeforeUnmount,watch} from 'vue';
 import supervision from '../assets/ergasia-supervision-hq.png';
 import access from '../assets/ergasia-access-hq.png';
 import workday from '../assets/brands/ergasia-workday.jpg';
 import logo from '../assets/brands/ergasia.png';
 const props=defineProps({pose:Object,reduced:Boolean});
 const canvas=ref(null),failed=ref(false),ready=ref(false);let cleanup,kick=()=>{},alive=true;
+const fallbackSafe=computed(()=>clearanceOpacity({left:props.pose.x-340*props.pose.scale,right:props.pose.x+340*props.pose.scale,top:props.pose.y-250*props.pose.scale,bottom:props.pose.y+250*props.pose.scale},props.pose.forbidden??[])>.99);
 watch(()=>props.pose,()=>kick());watch(()=>props.reduced,()=>kick());
 onMounted(async()=>{
  let renderer,model,environment,textures=[],frame=0,observer;
@@ -23,13 +25,16 @@ onMounted(async()=>{
  if(i===0||i===3){const h=1036/target;t.repeat.set(1036/1400,h/1120);t.offset.set(182/1400,1-(95+h)/1120);t.userData.screenAspect=target;}
  else {const aspect=t.image.width/t.image.height;if(aspect<=target){t.repeat.y=aspect/target;t.offset.y=1-t.repeat.y}}
 }
- model=makeMacbook(shots,brand);scene.add(model.root);let width=innerWidth,height=innerHeight,previous=0,current={...props.pose};
+ model=makeMacbook(shots,brand);scene.add(model.root);let width=innerWidth,height=innerHeight,previous=0,current={...props.pose},safeOpacity=0;const bounds=new THREE.Box3(),corner=new THREE.Vector3();
  const size=()=>{width=innerWidth;height=innerHeight;renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();kick()};
  function render(time){frame=0;if(!alive||document.hidden)return;const dt=Math.min(.05,(time-previous)/1000||.016);previous=time;const blend=1-Math.exp(-dt/0.26);let delta=0;for(const k of ['x','y','scale','angle','tilt','roll','progress','opacity','hinge']){const target=props.pose[k]??0;current[k]=current[k]??target;const difference=target-current[k];current[k]+=difference*blend;delta=Math.max(delta,Math.abs(difference));}
- const unit=2*Math.tan(THREE.MathUtils.degToRad(16))*18/height;model.root.position.set((current.x-width/2)*unit,(height/2-current.y)*unit,0);model.root.rotation.set(THREE.MathUtils.degToRad(current.tilt),THREE.MathUtils.degToRad(current.angle),THREE.MathUtils.degToRad(current.roll));model.root.scale.setScalar(current.scale*680*unit/8);const changing=model.update(current.progress,current.hinge,dt);canvas.value.style.zIndex=props.pose.behind||delta>20?'1':'4';canvas.value.style.opacity=String(current.opacity);renderer.render(scene,camera);ready.value=true;if(delta>.015||changing)frame=requestAnimationFrame(render);}
+ const unit=2*Math.tan(THREE.MathUtils.degToRad(16))*18/height;model.root.position.set((current.x-width/2)*unit,(height/2-current.y)*unit,0);model.root.rotation.set(THREE.MathUtils.degToRad(current.tilt),THREE.MathUtils.degToRad(current.angle),THREE.MathUtils.degToRad(current.roll));model.root.scale.setScalar(current.scale*680*unit/8);const changing=model.update(current.progress,current.hinge,dt);model.root.updateMatrixWorld(true);camera.updateMatrixWorld(true);bounds.setFromObject(model.root);const rect={left:Infinity,right:-Infinity,top:Infinity,bottom:-Infinity};for(const x of [bounds.min.x,bounds.max.x])for(const y of [bounds.min.y,bounds.max.y])for(const z of [bounds.min.z,bounds.max.z]){corner.set(x,y,z).project(camera);const px=(corner.x+1)*width/2,py=(1-corner.y)*height/2;rect.left=Math.min(rect.left,px);rect.right=Math.max(rect.right,px);rect.top=Math.min(rect.top,py);rect.bottom=Math.max(rect.bottom,py);}
+ const clear=props.pose.projectsVisible?0:clearanceOpacity(rect,props.pose.forbidden??[]);
+ const targetOpacity=clear*current.opacity;safeOpacity=targetOpacity<safeOpacity?targetOpacity:safeOpacity+(targetOpacity-safeOpacity)*blend;
+ canvas.value.style.zIndex='4';canvas.value.style.opacity=String(safeOpacity);canvas.value.dataset.layoutClear=String(clear>0);renderer.render(scene,camera);ready.value=true;if(delta>.015||changing||Math.abs(safeOpacity-targetOpacity)>.005)frame=requestAnimationFrame(render);}
  kick=()=>{if(!frame&&alive)frame=requestAnimationFrame(render)};const visibility=()=>{if(!document.hidden)kick()};observer=new ResizeObserver(size);observer.observe(document.documentElement);document.addEventListener('visibilitychange',visibility);const baseCleanup=cleanup;cleanup=()=>{document.removeEventListener('visibilitychange',visibility);baseCleanup()};size();kick();
  }catch(error){if(alive){failed.value=true;dispose();console.warn('3D scene unavailable; showing product preview.')}}
 });
 onBeforeUnmount(()=>{alive=false;cleanup?.()});
 </script>
-<template><canvas ref="canvas" class="macbook-webgl" :class="{'model-ready':ready}" :style="{zIndex:pose.behind?1:4,visibility:reduced?'hidden':'visible'}" aria-hidden="true"></canvas><div v-if="failed&&!reduced" class="macbook-fallback" :style="{left:pose.x+'px',top:pose.y+'px',transform:`translate(-50%,-50%) scale(${pose.scale}) rotateY(${pose.angle}deg)`}" aria-hidden="true"><img :src="supervision" alt=""></div></template>
+<template><canvas ref="canvas" class="macbook-webgl" :class="{'model-ready':ready}" :style="{zIndex:pose.behind?1:4,visibility:reduced?'hidden':'visible'}" aria-hidden="true"></canvas><div v-if="failed&&!reduced&&!pose.projectsVisible&&pose.opacity>0&&fallbackSafe" class="macbook-fallback" :style="{left:pose.x+'px',top:pose.y+'px',transform:`translate(-50%,-50%) scale(${pose.scale}) rotateY(${pose.angle}deg)`}" aria-hidden="true"><img :src="supervision" alt=""></div></template>
