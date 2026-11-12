@@ -7,7 +7,7 @@ const turn=ref(0),paused=ref(false),hovered=ref(false),focused=ref(false),visibl
 const active=computed(()=>((turn.value%props.projects.length)+props.projects.length)%props.projects.length);
 const current=computed(()=>props.projects[active.value]);
 const t=(a,b)=>props.es?a:b;
-let timer,observer,controller,startX=null,entryTimer,scrollFrame=0;
+let timer,observer,controller,startX=null,entryTimer;
 function select(i){const n=props.projects.length;let d=(i-active.value+n)%n;if(d>n/2)d-=n;turn.value+=d;}
 function move(d){turn.value+=d;}
 function key(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();move(e.key==='ArrowRight'?1:-1)}}
@@ -21,10 +21,9 @@ onMounted(()=>{
  const advance=()=>{if(canMove())move(1)};
  let entered=false;
  observer=new IntersectionObserver(([e])=>{visible.value=e.isIntersecting;if(e.isIntersecting&&!entered){entered=true;entryTimer=setTimeout(advance,650);timer=setInterval(advance,3400)}},{threshold:.12});observer.observe(stage.value);
- const scroll=()=>{if(scrollFrame||!visible.value||reduced.value)return;scrollFrame=requestAnimationFrame(()=>{scrollFrame=0;const r=stage.value.getBoundingClientRect();const p=Math.max(-1,Math.min(1,(innerHeight/2-r.top-r.height/2)/innerHeight));stage.value.style.setProperty('--scroll-lift',`${p*-20}px`);stage.value.style.setProperty('--scroll-yaw',`${p*9}deg`);});};
- window.addEventListener('scroll',scroll,{passive:true,signal:controller.signal});
+
 });
-onBeforeUnmount(()=>{clearInterval(timer);clearTimeout(entryTimer);cancelAnimationFrame(scrollFrame);observer?.disconnect();controller?.abort()});
+onBeforeUnmount(()=>{clearInterval(timer);clearTimeout(entryTimer);observer?.disconnect();controller?.abort()});
 </script>
 <template>
 <div class="spatial-showcase" :style="{'--active-hue':current.hue||245}" @focusin="focused=true" @focusout="e=>{if(!e.currentTarget.contains(e.relatedTarget))focused=false}">
