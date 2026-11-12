@@ -1,8 +1,9 @@
 <script setup>
 import {computed,ref,watchEffect,onMounted,onBeforeUnmount} from 'vue';
+import BrandJourney from './components/BrandJourney.vue';
+import ErgasiaExperience from './components/ErgasiaExperience.vue';
 import GlassFeatureIcon from './components/GlassFeatureIcon.vue';
 import ergasiaLogo from './assets/ergasia-logo.svg';
-import ProductScene from './components/ProductScene.vue';
 import ergasiaCover from './assets/ergasia-acceso.webp';
 import './styles/product-scenes.css';
 import SpatialProjects from './components/SpatialProjects.vue';
@@ -17,6 +18,7 @@ import veltrix from './assets/veltrix-preview.webp';
 import nexora from './assets/nexora-preview.webp';
 import pleon from './assets/pleon-store-preview.png';
 import cv from './assets/documents/ismael-blandon-cv.pdf';
+import './styles/silver.css';
 let saved='es';try{saved=localStorage.getItem('lang')||'es'}catch{}
 const lang=ref(saved==='en'?'en':'es'),menu=ref(false);
 const es=computed(()=>lang.value==='es');
@@ -69,8 +71,9 @@ onBeforeUnmount(()=>motionCleanup?.());
  <p class="hero-description">{{t('Diseñamos e implementamos software, sitios web y automatizaciones para convertir las necesidades de tu empresa en soluciones que puedas usar.','We design and implement software, websites and automations that turn your business needs into solutions you can use.')}}</p>
  <div class="actions"><a class="button primary" href="#contact">{{t('Conversemos sobre tu proyecto','Let’s discuss your project')}} ↗</a><a class="text-link" href="#projects">{{t('Explorar proyectos','Explore projects')}} ↓</a></div>
  <div class="hero-proof"><span class="proof-number">+4</span><span>{{t('años de experiencia','years of experience')}}<small>{{t('Desarrollo de software de principio a fin.','End-to-end software development.')}}</small></span></div>
-</div><div class="hero-visual hero-product-stage" data-depth><a href="#projects" class="hero-scene-link" :aria-label="t('Explorar los proyectos implementados','Explore implemented projects')"><ProductScene :project="projects[0]" :es="es" hero /></a><div class="hero-stage-caption"><span class="status-dot"></span>{{t('SOFTWARE PROPIO · DISEÑADO E IMPLEMENTADO','OUR SOFTWARE · DESIGNED AND IMPLEMENTED')}}<span>↗</span></div></div></section>
+</div><ErgasiaExperience :es="es" /></section>
 <div class="expertise-strip container"><span>{{t('SOLUCIONES CON UNA VISIÓN INTEGRAL','SOLUTIONS WITH A COMPLETE PERSPECTIVE')}}</span><div><span>Frontend & Backend</span><b>·</b><span>{{t('Productos digitales','Digital products')}}</span><b>·</b><span>{{t('Integraciones con IA','AI integrations')}}</span></div></div>
+<BrandJourney :es="es" />
 <section id="services" class="section container"><div class="section-heading"><div><p class="eyebrow">01 / {{t('SERVICIOS','SERVICES')}}</p><h2>{{t('Lo que tu negocio necesita.','What your business needs.')}}<br><span>{{t('Bien implementado.','Thoughtfully implemented.')}}</span></h2></div><p>{{t('Desde una presencia digital profesional hasta una herramienta para tu operación. Definimos el alcance y construimos contigo.','From a professional digital presence to a tool for your operations. We define the scope and build with you.')}}</p></div><div class="services-grid"><article v-for="s in services" :key="s[0]" class="service-card"><div class="service-top"><span>{{s[0]}}</span><span aria-hidden="true">↗</span></div><h3>{{s[1]}}</h3><p>{{s[2]}}</p><small>{{s[3]}}</small></article></div></section>
 <section id="projects" class="section projects-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">02 / {{t('PROYECTOS SELECCIONADOS','SELECTED PROJECTS')}}</p><h2>{{t('Del concepto','From concept')}}<br><span>{{t('a la experiencia.','to experience.')}}</span></h2></div><p>{{t('Una selección de productos y demos que muestran cómo convertimos requisitos en interfaces y funciones concretas.','A selection of products and demos showing how we turn requirements into practical interfaces and features.')}}</p></div><SpatialProjects :projects="projects" :es="es" /></div></section>
 <section id="software" class="section container"><div class="software-panel glass"><div class="software-copy"><p class="eyebrow">03 / {{t('SOFTWARE PARA TU EMPRESA','SOFTWARE FOR YOUR BUSINESS')}}</p><div class="software-title"><span class="product-mark ergasia-brand-mark"><img :src="ergasiaLogo" alt="Logo de Ergasia" width="44" height="44"></span><h2>Ergasia</h2></div><h3>{{t('Tu equipo, en el mismo ritmo.','Your team, in the same rhythm.')}}</h3><p>{{t('Centraliza jornadas, tareas, llegadas tarde y conversaciones. Una solución para mantener el seguimiento del equipo en un solo lugar.','Bring work sessions, tasks, late arrivals and conversations together. A solution to keep track of your team in one place.')}}</p><a class="button primary" href="https://ergasia.pages.dev/" target="_blank" rel="noopener noreferrer">{{t('Conocer Ergasia','Discover Ergasia')}} ↗</a></div><div class="software-features"><p class="eyebrow">{{t('MENOS DISPERSIÓN. MÁS CLARIDAD.','LESS FRAGMENTATION. MORE CLARITY.')}}</p><div v-for="(item,i) in [t('Jornadas y horarios','Work sessions & schedules'),t('Tareas y seguimiento','Tasks & follow-up'),t('Conversaciones del equipo','Team conversations')]" :key="item"><GlassFeatureIcon :kind="i" /><span>{{item}}</span><span class="check">✓</span></div><small>{{t('Consulta las funcionalidades y los planes en el sitio del producto.','Explore features and plans on the product website.')}}</small></div></div></section>
