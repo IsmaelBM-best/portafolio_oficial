@@ -2,6 +2,30 @@
 import { ref } from 'vue'
 const people = [
   {
+    "image": 5,
+    "name": "Jimena Blandón Moreno",
+    "role": "CEO",
+    "title": "Tranquilidad para coordinar",
+    "quote": "“Nos da tranquilidad poder consultar en tiempo real en qué está trabajando cada integrante del equipo. Tenemos una visión más clara de la operación y podemos acompañar el trabajo sin interrumpir continuamente para preguntar cómo va.”",
+    "rating": 5
+  },
+  {
+    "image": 6,
+    "name": "Apolonio Barrios Lara",
+    "role": "CTO",
+    "title": "Cada persona sabe qué hacer",
+    "quote": "“Ya no recibimos constantemente las preguntas de “¿en qué trabajo?” o “¿qué tengo que hacer?”. Con las tareas organizadas en Ergasia, cada persona consulta lo que tiene asignado y sabe por dónde empezar.”",
+    "rating": 5
+  },
+  {
+    "image": 7,
+    "name": "Mary Martínez",
+    "role": "Líder administrativa · Arquitecta",
+    "title": "Una jornada más puntual",
+    "quote": "“Desde que implementamos Ergasia, dejamos de tener las llegadas tarde que antes afectaban la organización del equipo. Hoy arrancamos la jornada con más orden y claridad.”",
+    "rating": 5
+  },
+  {
     "image": 2,
     "name": "Esteban",
     "role": "Empleado · Arquitecto",
@@ -19,31 +43,7 @@ const people = [
   },
   {
     "image": 4,
-    "name": "Jimena Blandón Moreno",
-    "role": "CEO",
-    "title": "Tranquilidad para coordinar",
-    "quote": "“Nos da tranquilidad poder consultar en tiempo real en qué está trabajando cada integrante del equipo. Tenemos una visión más clara de la operación y podemos acompañar el trabajo sin interrumpir continuamente para preguntar cómo va.”",
-    "rating": 5
-  },
-  {
-    "image": 5,
-    "name": "Apolonio Barrios Lara",
-    "role": "CTO",
-    "title": "Cada persona sabe qué hacer",
-    "quote": "“Ya no recibimos constantemente las preguntas de “¿en qué trabajo?” o “¿qué tengo que hacer?”. Con las tareas organizadas en Ergasia, cada persona consulta lo que tiene asignado y sabe por dónde empezar.”",
-    "rating": 5
-  },
-  {
-    "image": 6,
-    "name": "Mary Martínez",
-    "role": "Líder administrativa · Arquitecta",
-    "title": "Una jornada más puntual",
-    "quote": "“Desde que implementamos Ergasia, dejamos de tener las llegadas tarde que antes afectaban la organización del equipo. Hoy arrancamos la jornada con más orden y claridad.”",
-    "rating": 5
-  },
-  {
-    "image": 7,
-    "name": "Fernando",
+    "name": "Juan",
     "role": "Empleado · Arquitecto",
     "title": "Más tiempo para trabajar",
     "quote": "“La organización de Ergasia me facilita el día. Encuentro lo que necesito hacer y dedico menos tiempo a pedir indicaciones y más tiempo a avanzar en mis tareas.”",
