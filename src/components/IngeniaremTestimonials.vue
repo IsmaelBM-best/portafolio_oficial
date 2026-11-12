@@ -1,6 +1,8 @@
 <script setup>
-import { ref } from 'vue'
-const people = [
+import { ref, computed } from 'vue'
+const props = defineProps({ es: { type: Boolean, default: true } })
+const t = (es, en) => props.es ? es : en
+const originals = [
   {
     "image": 5,
     "name": "Jimena Blandón Moreno",
@@ -50,26 +52,28 @@ const people = [
     "rating": 5
   }
 ]
+const english = [["CEO","Peace of mind when coordinating","“It gives us peace of mind to see what each team member is working on in real time. We have a clearer picture of our operations and can support the team without constantly interrupting to ask how things are going.”"],["CTO","Everyone knows what to do","“We no longer constantly hear ‘What should I work on?’ or ‘What do I need to do?’. With tasks organized in Ergasia, everyone can check their assignments and knows where to start.”"],["Administrative Lead · Architect","A more punctual workday","“Since we implemented Ergasia, we no longer have the late arrivals that used to disrupt the team. We now start the workday with more structure and clarity.”"],["Employee · Architect","Fewer misunderstandings","“We now have fewer misunderstandings with our team leaders. Having our tasks organized helps us stay on the same page and work with clearer instructions.”"],["Employee · Architect","We speak the same language","“With Ergasia, I feel like our team speaks the same language. I can check my assignments and better understand what is expected of my work.”"],["Employee · Architect","More time to get things done","“Ergasia makes my workday easier. I can find what I need to do and spend less time asking for directions and more time making progress on my tasks.”"]]
+const people = computed(() => originals.map((person, i) => props.es ? person : { ...person, role: english[i][0], title: english[i][1], quote: english[i][2] }))
 const active = ref(-1)
 const toggle = i => { active.value = active.value === i ? -1 : i }
-const step = direction => { active.value = active.value < 0 ? (direction > 0 ? 0 : people.length - 1) : (active.value + direction + people.length) % people.length }
+const step = direction => { active.value = active.value < 0 ? (direction > 0 ? 0 : people.value.length - 1) : (active.value + direction + people.value.length) % people.value.length }
 </script>
 
 <template>
   <section id="testimonials" class="testimonials-section container" aria-labelledby="voices-heading">
     <div class="testimonials-content">
       <header class="intro">
-        <div><p class="eyebrow">Testimonios · Ingeniarem × Ergasia</p><h2 id="voices-heading">Más claridad.<br><span>Un equipo en sintonía.</span></h2><p>La organización del trabajo, vista desde quienes ejecutan las tareas y quienes coordinan al equipo.</p></div>
-        <a class="company-link" href="https://www.instagram.com/ingeniarem/" target="_blank" rel="noopener noreferrer"><img src="/propuestas/ingeniarem/ingeniarem.png" alt="Ingeniarem SAS" width="653" height="326"><span>Conoce a Ingeniarem ↗</span></a>
+        <div><p class="eyebrow">{{t('Testimonios','Testimonials')}} · Ingeniarem × Ergasia</p><h2 id="voices-heading">{{t('Más claridad.','More clarity.')}}<br><span>{{t('Un equipo en sintonía.','A team in sync.')}}</span></h2><p>{{t('La organización del trabajo, vista desde quienes ejecutan las tareas y quienes coordinan al equipo.','Organized work, through the eyes of the people doing the tasks and leading the team.')}}</p></div>
+        <a class="company-link" href="https://www.instagram.com/ingeniarem/" target="_blank" rel="noopener noreferrer"><img src="/propuestas/ingeniarem/ingeniarem.png" alt="Ingeniarem SAS" width="653" height="326"><span>{{t('Conoce a Ingeniarem','Meet Ingeniarem')}} ↗</span></a>
       </header>
-      <div class="voices-toolbar"><span>VOCES DEL EQUIPO <small>Selecciona una historia</small></span><div class="voices-navigation"><button type="button" aria-label="Testimonio anterior" @click="step(-1)">←</button><span>{{ active < 0 ? '06 historias' : String(active + 1).padStart(2, '0') + ' / 06' }}</span><button type="button" aria-label="Testimonio siguiente" @click="step(1)">→</button></div></div>
+      <div class="voices-toolbar"><span>{{t('VOCES DEL EQUIPO','TEAM VOICES')}} <small>{{t('Selecciona una historia','Choose a story')}}</small></span><div class="voices-navigation"><button type="button" :aria-label="t('Testimonio anterior','Previous testimonial')" @click="step(-1)">←</button><span>{{ active < 0 ? t('06 historias','06 stories') : String(active + 1).padStart(2, '0') + ' / 06' }}</span><button type="button" :aria-label="t('Testimonio siguiente','Next testimonial')" @click="step(1)">→</button></div></div>
       <div class="voices-accordion" @keydown.right.prevent="step(1)" @keydown.left.prevent="step(-1)">
         <article v-for="(person, i) in people" :key="person.image" class="voice-slide" :class="{ 'is-open': active === i }">
           <img class="voice-photo" :src="'/propuestas/ingeniarem/portrait-' + person.image + '.webp'" :alt="person.name" width="1086" height="1448" loading="lazy" decoding="async">
           <div class="voice-shade" aria-hidden="true"></div>
-          <button class="voice-toggle" type="button" :aria-label="(active === i ? 'Cerrar testimonio de ' : 'Ver testimonio de ') + person.name" :aria-expanded="active === i" :aria-controls="'voice-details-' + i" @click="toggle(i)"><span class="voice-index">{{ String(i + 1).padStart(2, '0') }}</span><span class="voice-compact-name">{{ person.name }}</span><span class="voice-plus" aria-hidden="true"></span></button>
+          <button class="voice-toggle" type="button" :aria-label="(active === i ? t('Cerrar testimonio de ','Close testimonial from ') : t('Ver testimonio de ','Read testimonial from ')) + person.name" :aria-expanded="active === i" :aria-controls="'voice-details-' + i" @click="toggle(i)"><span class="voice-index">{{ String(i + 1).padStart(2, '0') }}</span><span class="voice-compact-name">{{ person.name }}</span><span class="voice-plus" aria-hidden="true"></span></button>
           <div :id="'voice-details-' + i" class="voice-details" :aria-hidden="active !== i" :inert="active !== i">
-            <div class="voice-rating" role="img" :aria-label="person.rating + ' de 5 estrellas'"><span v-for="star in 5" :key="star" class="voice-star" aria-hidden="true">★<i :style="{width: Math.min(1, Math.max(0, person.rating - star + 1)) * 100 + '%'}">★</i></span><span>{{ person.rating === 4.5 ? '4,5' : '5' }}/5</span></div>
+            <div class="voice-rating" role="img" :aria-label="person.rating + t(' de 5 estrellas',' out of 5 stars')"><span v-for="star in 5" :key="star" class="voice-star" aria-hidden="true">★<i :style="{width: Math.min(1, Math.max(0, person.rating - star + 1)) * 100 + '%'}">★</i></span><span>{{ person.rating === 4.5 ? t('4,5','4.5') : '5' }}/5</span></div>
             <h3>{{ person.title }}</h3><blockquote>{{ person.quote }}</blockquote><div class="voice-person"><strong>{{ person.name }}</strong><span>{{ person.role }}</span><small>Ingeniarem SAS</small></div>
           </div>
         </article>
